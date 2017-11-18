@@ -24,6 +24,11 @@ var fields = {
 /*  FUNCTIONS */
 // these should be self explanatory as well
 
+
+getNext(){
+  // transition to the next card  
+}
+
 recommend(){
   // handle recommend
 }
