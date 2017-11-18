@@ -60,3 +60,7 @@ chat(){
   // send email!
 }
 
+setFields(name, username, password, location, bio){
+  
+}
+
