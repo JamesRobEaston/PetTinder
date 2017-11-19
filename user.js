@@ -593,6 +593,9 @@ function sortArray(){
 //array==the array that needs to be sorted, aspect == the attribute to sort by, 
 //prefAspectVal == the preferred value of the aspect
 function bubbleSort(array, aspect, prefAspectVal){
+
+  console.log("Aspect: " + aspect);
+
   if(aspect === "animalAge"){
     let delta = 0;
     for(let i = 0; i < array.length; i++){
@@ -604,13 +607,11 @@ function bubbleSort(array, aspect, prefAspectVal){
         delta++;
       }
     }
-  }
-  
-  if(aspect ==="animalGender"){
+  }else if(aspect ==="animalGender"){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(array[j].animalGender === prefAspectVal && array[j+1][animalGender] !== prefAspectVal){
+        if(array[j].animalGender === prefAspectVal && array[j+1].animalGender !== prefAspectVal){
           swap(array, j , j+1);
         }
       }
@@ -627,6 +628,12 @@ function bubbleSort(array, aspect, prefAspectVal){
       }
     }
   }
+
+  for (let k = 0 ; k < array.length ; k++){
+    console.log("(" + k + ") Age: " + array[k].animalAge + " Gender: " + array[k].animalGender + " Price: " + array[k].price);
+  }
+
+
 }
 
 /*
@@ -742,7 +749,7 @@ function populateUserPref(){
   fields.pref_gender = document.getElementById('pref_gender').value;
   fields.gender_wieght = 1;
   fields.price_weight = 0;
-  fields.age_weight = 4;
+  fields.age_weight = 8;
   
   /*'name' : 'PLACEHOLDER',
   'username' : 'EMAIL',
