@@ -161,8 +161,8 @@ function getNext(){
   }
 
   // set top name line
-  var name = "" + card.animalName + ", " + card.animalGender + ", " + card.animalAge;
-  name += "<br>";
+  var name = "" + card.animalName + ", " + card.animalGender + ", " + (card.animalAge/12).toFixed(2) + " Yrs";
+  name += "<br>Adoption Price: $ " + card.price;
   
   // set bio
   var bio = card.animalType + ", " + card.animalLocation + "<br>"; 
@@ -740,9 +740,9 @@ function populateUserPref(){
   fields.pref_animal = document.getElementById('pref_animal').value;
   fields.pref_age = document.getElementById('pref_age').value;
   fields.pref_gender = document.getElementById('pref_gender').value;
-  fields.gender_wieght = 4;
-  fields.price_weight = 1;
-  fields.age_weight = 0;
+  fields.gender_wieght = 1;
+  fields.price_weight = 0;
+  fields.age_weight = 4;
   
   /*'name' : 'PLACEHOLDER',
   'username' : 'EMAIL',
