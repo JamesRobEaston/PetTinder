@@ -571,6 +571,7 @@ function sortArray(){
       for(counter = j; counter < k; counter++){
         relevantCards[counter] = temp[counter - j];
       }
+      j = k;
     }
   }
 }
@@ -583,7 +584,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(Math.abs(array[j][animalAge] - delta - prefAspectVal) > Math.abs(array[j+1][animalAge] - delta - prefAspectVal)){
+        if(Math.abs(array[j].animalAge - delta - prefAspectVal) > Math.abs(array[j+1].animalAge - delta - prefAspectVal)){
           swap(array, j , j+1);
         }
         delta++;
@@ -595,7 +596,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(array[j][animalGender] === prefAspectVal && array[j+1][animalGender] !== prefAspectVal){
+        if(array[j].animalGender === prefAspectVal && array[j+1].animalGender !== prefAspectVal){
           swap(array, j , j+1);
         }
       }
@@ -606,7 +607,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(array[j][price] > array[j+1][price]){
+        if(array[j].price > array[j+1].price){
           swap(array, j , j+1);
         }
       }
