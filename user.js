@@ -36,7 +36,8 @@ var prefArray = [];
 var relevantCards = new Array();
 
 var cards = 
-[ {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 96, 'animalGender' : "MALE", 'image' : 'img/Camel/1.jpg', 'price' : 6500},
+[ {'animalName' : '', 'animalType' : 'ERROR_OUT_OF_MATCHES', 'animalOwner' : "", 'animalLocation' : "", 'animalBio' : '', 'animalAge' : 96, 'animalGender' : "", 'image' : 'img/Errors/Thats_all_folks.png', 'price' : 6500},
+  {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 96, 'animalGender' : "MALE", 'image' : 'img/Camel/1.jpg', 'price' : 6500},
   {'animalName' : 'Russel', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Hartsville', 'animalBio' : 'Been used for petting zoos and nativity scenes. Leads she raised several calves, last one,weaned about 8 months ago. Please contact us for further information.', 'animalAge' : 156, 'animalGender' : 'Female', 'image' : 'img/Camel/2.jpg', 'price' : 8000},
   {'animalName' : 'Tim', 'animalType' : 'Camel', 'animalOwner': '', 'animalLocation' : 'McKee', 'animalBio' : 'I have a 1.5 year old camel for sale. He has been used in a petting zoo all Fall and is ready to move on to a new home. He is very gentle and loves to eat out of your hand. Call or text at 606-438-9128 with any questions. I’m asking 5000 or may trade to some cattle.', 'animalAge' : 18, 'animalGender' : 'Male', 'image' : 'img/camel/10.jpg', 'price' : 0},
   {'animalName' : 'Matt Yoder' , 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Mount Hope', 'animalBio' : 'on the bottle\n$4500', 'animalAge' : 1, 'animalGender' : 'Male', 'image' : 'img/Camel/16.jpg', 'price' : 4500},
@@ -154,20 +155,27 @@ function getNext(){
   if (card != undefined){
     document.getElementById('pet_pic').src = card.image;
     document.getElementById('bio').innerHTML = card.animalBio;
+
+    // set top name line
+    var name = "" + card.animalName + ", " + card.animalGender + ", " + (card.animalAge/12).toFixed(2) + " Yrs";
+    name += "<br>Adoption Price: $ " + card.price;
+    
+    // set bio
+    var bio = card.animalType + ", " + card.animalLocation + "<br>"; 
+    bio += card.animalBio + "<br>";
+    
+    document.getElementById('name_line').innerHTML = name;
     console.log('New animal should be displayed. Name: ' + card.animalName);
   }else{
     document.getElementById('pet_pic').src = 'img/Errors/technical_difficulties.jpg';
+    document.getElementById('bio').innerHTML = "";
+    document.getElementById('name_line').innerHTML = "";
   }
 
-  // set top name line
-  var name = "" + card.animalName + ", " + card.animalGender + ", " + (card.animalAge/12).toFixed(2) + " Yrs";
-  name += "<br>Adoption Price: $ " + card.price;
-  
-  // set bio
-  var bio = card.animalType + ", " + card.animalLocation + "<br>"; 
-  bio += card.animalBio + "<br>";
-  
-  document.getElementById('name_line').innerHTML = name;
+  if (card.animalType === "ERROR_OUT_OF_MATCHES"){
+    document.getElementById('bio').innerHTML = "";
+    document.getElementById('name_line').innerHTML = "";
+  }
 }
 
 function fetchFirstCard(){
