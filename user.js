@@ -718,8 +718,8 @@ function populateUserPref(){
   fields.name = 'John Doe';
   fields.username = 'john_doe@website.come';
   fields.pref_animal = document.getElementById('pref_animal').value;
-  fields.age = document.getElementById('pref_age').value;
-  fields.gender = document.getElementById('pref_gender').value;
+  fields.pref_age = document.getElementById('pref_age').value;
+  fields.pref_gender = document.getElementById('pref_gender').value;
   /*'name' : 'PLACEHOLDER',
   'username' : 'EMAIL',
   'password' : 'PROTECTED',
