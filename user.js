@@ -13,7 +13,7 @@
 var fields = {
 
   'name' : 'PLACEHOLDER',
-  'username' : 'USER',
+  'username' : 'USER', //Email address of user
   'password' : 'PROTECTED',
   'location' : 'LOCATION',
   'bio' : 'PLACEHOLDER'
@@ -41,7 +41,7 @@ getNext(){
 
 recommend(mailAddress, pet){
   // handle recommend
-  window.open('mailto:' + mailAddress + '?subject=Your New Pet!&body=Check out ' + pet.name);
+  window.open('mailto:' + mailAddress + '?subject=Your New Pet!&body=Check out ' + pet.name + ', your next best friend!');
 }
 
 like(pet){
@@ -71,8 +71,9 @@ undo(){
 //   // handle boosting
 // }
 
-chat(){
+chat(pet){
   // send email!
+  window.open('mailto:' + pet.username + '?subject=PetTinder Inquiry');
 }
 
 setFields(name, username, password, location, bio, pref_animal, age_weight, gender_weight, distance_weight){
