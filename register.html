@@ -10,7 +10,7 @@
   
   <body>
     <p style="color:white; text-align:center;">Tell us a little more about yourself:</p>
-    <form id="about" method="POST">
+    <form id="about" action="match.html" method="POST">
 			<label for="pref_animal">Preferred Animal</label>
         <select id="pref_animal" name="pref_animal" style="width:200px">
           <option value="dog">Dog</option>
@@ -24,20 +24,20 @@
           <option value="elephant">Elephant</option>
           <option value="tiger">Tiger</option>
           <option value="giraffe">Giraffe</option>
-      </select>
-			<label for="pref_age">Preferred Age</label><input type="text" name="pref_age">
-			<label for="pref_gender">I'm looking for &nbsp;</label>
-        <input type="radio" name="pref_gender" id="pref_gender" value="male">Male<br>
-        <input type="radio" name="pref_gender" id="pref_gender" value="female">Female<br>
-			<label for="distance">Within: &nbsp;</label>
+	  <option value="sloth">Sloth</option>
+      </select><br>
+	<label for="pref_age">Preferred Age</label><input type="text" name="pref_age"><br>
+	<label for="pref_gender">I'm looking for &nbsp;</label>
+        	<input type="radio" name="pref_gender" id="pref_gender" value="male">Male<br>
+        	<input type="radio" name="pref_gender" id="pref_gender" value="female">Female<br>
+	<label for="distance">Within: &nbsp;</label>
         <select id="distance name="distance" style="width:200px">
           <option value="5">5 miles</option>
           <option value="15">15 miles</option>
           <option value="30">30 miles</option>
           <option value="50">50 miles</option>
-        </select>
-			<input type="submit" action="match.html" value="Find My Forever Pet!">
+        </select><br>
+	<input type="submit" value="Find My Forever Pet!">
     </form>
   </body>
-
 </html>
