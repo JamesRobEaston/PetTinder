@@ -113,14 +113,14 @@
       }
   
       #undo {
-        width:30px;
-        height:30px;
+        width:50px;
+        height:50px;
         -webkit-filter: invert(100%);
         cursor: pointer;
       }
       #nope {
-        width:75px;
-        height:75px;
+        width:50px;
+        height:50px;
         cursor: pointer;
       }
       #superlike {
@@ -129,8 +129,8 @@
         cursor: pointer;
       }
       #like {
-        width:75px;
-        height:75px;
+        width:50px;
+        height:50px;
         cursor: pointer;
       }
       #mail {
@@ -149,24 +149,23 @@
       </ul>
     </div>
     </nav>
-    
-    <div class="card" style="width: 20rem;">
-  <img class="card-img-top" src="img/Camel/1.jpg" alt="pet pic">
-    <div class="card-body">
-      <h4 class="card-title" id="name_line">Joe Camel, 19</h4>
-      <p class="card-text">bio</p>
-      <p style="text-align:center;">
+
+    <p style="text-align:center;">
+      <img id="pet_pic" src="img/Camel/1.jpg" alt="pet">
+    </p><br>
+    <p id="name_line" style="text-align:center; color:white; font-family: Helvetica Neue">Joe Camel, 19</p>
+    <p style="text-align:center;">
       <img id="undo" src="img/undo.png" alt="undo" onclick="undo()">
       <img id="nope" src="img/nope.png" alt="nope" onclick="dislike()">
       <img id="superlike" src="img/super-like.png" alt="superlike" onclick="superLike()">
       <img id="like" src="img/like.png" alt="like" onclick="like()">
     </p><br>
-     <p style="text-align:center;">
+    <p id="bio" style="text-align:center; color:white; font-family: Helvetica Neue">Bio</p><br>
+    <p style="text-align:center;">
       <img id="mail" src="img/mail.png" alt="mail" onclick="chat()">
     </p><br>
-    </div>
-  </div>
-
   </div>
   </body>
 </html>
+
+
