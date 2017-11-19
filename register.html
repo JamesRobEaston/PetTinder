@@ -12,7 +12,7 @@
     <div id = "form";>
     <p style="color:white; text-align:center;">Tell us a little more about yourself:</p>
     <form id="about" method="POST">
-	<label for="pref_animal">Preferred Animal</label>
+	<p style="text-align:center; color:white;"><label for="pref_animal">Preferred Animal</label>
         <select id="pref_animal" name="pref_animal" style="width:200px">
           <option value="dog">Dog</option>
           <option value="cat">Cat</option>
@@ -26,18 +26,20 @@
           <option value="tiger">Tiger</option>
           <option value="giraffe">Giraffe</option>
 	  <option value="sloth">Sloth</option>
-      </select><br>
-	<label for="pref_age">Preferred Age</label><input type="text" name="pref_age"><br>
-	<label for="pref_gender">I'm looking for &nbsp;</label>
+      </select></p><br>
+	<p style="text-align:center; color:white;"><label for="pref_age">Preferred Age</label>
+		<input type="text" name="pref_age"></p><br>
+	<p style="text-align:center; color:white;"><label for="pref_gender">I'm looking for &nbsp;</label>
         	<input type="radio" name="pref_gender" id="pref_gender" value="male">Male<br>
-        	<input type="radio" name="pref_gender" id="pref_gender" value="female">Female<br>
-	<label for="distance">Within: &nbsp;</label>
+		<input type="radio" name="pref_gender" id="pref_gender" value="female">Female<br></p>
+	
+	<p style="text-align:center; color:white;"><label for="distance">Within: &nbsp;</label>
         <select id="distance name="distance" style="width:200px">
           <option value="5">5 miles</option>
           <option value="15">15 miles</option>
           <option value="30">30 miles</option>
           <option value="50">50 miles</option>
-        </select><br>
+      </select></p><br>
     </form>
   </div>
 
