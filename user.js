@@ -583,7 +583,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(Math.abs(array[j][animalAge] - delta - prefAspectVal) > Math.abs(array[j][animalAge] - delta - prefAspectVal)){
+        if(Math.abs(array[j][animalAge] - delta - prefAspectVal) > Math.abs(array[j+1][animalAge] - delta - prefAspectVal)){
           swap(array, j , j+1);
         }
         delta++;
