@@ -1,12 +1,12 @@
 // THIS IS THE FILE THAT HANDLES THE CARD OBJECTS
 
 var cards = 
-[ {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 8, 'animalGender' : "MALE", 'image' : '/img/Camel/1.jpg'}
-  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
-  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
-  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
-  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
-  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+[ {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 96, 'animalGender' : "MALE", 'image' : '/img/Camel/1.jpg'}
+  {'animalName' : 'Russel', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Hartsville', 'animalBio' : 'Been used for petting zoos and nativity scenes. Leads she raised several calves, last one,weaned about 8 months ago. Please contact us for further information.', 'animalAge' : 156, 'animalGender' : 'FEMALE', 'image' : '/img/Camel/2.jpg'}
+  {'animalName' : 'Tim', 'animalType' : 'Camel', 'animalOwner': '', 'animalLocation' : 'McKee', 'animalBio' : 'I have a 1.5 year old camel for sale. He has been used in a petting zoo all Fall and is ready to move on to a new home. He is very gentle and loves to eat out of your hand. Call or text at 606-438-9128 with any questions. I’m asking 5000 or may trade to some cattle.', 'animalAge' : 18, 'animalGender' : 'MALE', 'image' : '/img/camel/10.jpg'}
+  {'animalName' : 'Matt Yoder' , 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Mount Hope', 'animalBio' : 'on the bottle\n$4500', 'animalAge' : 1, 'animalGender' : 'MALE', 'image' : '/img/Camel/16.jpg'}
+  {'animalName' : 'Karl Mogensen', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Natural Bridge', 'animalBio' : 'Dromedary camel male born 10-4-2017. Bottle fed, super nice. $4000 Call 540-460-7158\nGreat for Christmas shows and petting zoos', 'animalAge' : 1, 'animalGender' : 'MALE', 'image' : '/img/Camel/17.jpg'}
+  {'animalName' : 'Camille', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Sikeston', 'animalBio' : "Camille has been doing rides for about 5 years, she's had 3 calves and is currently in with two bull camels. She is trained to kush, hobble trained, loads up in a trailer easy. She is almost 7 foot tall she is a big girl. Asking $16,000 please call or text for any further information or photos. Serious inquires only!", 'animalAge' : 132, 'animalGender' : , 'image' : '/img/Camel/3.jpg'}
   {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
   {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
   {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
@@ -29,7 +29,7 @@ var cards =
   {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
 
 ];
-var relevantCards;
+var relevantCards = new Array();
 
 function addCard(name, type, owner, location, bio, age, gender){
 	
@@ -74,7 +74,7 @@ function sortCards(){
 
 function sortPreferences(){
 
-	var sortOutputs;
+	var sortOutputs = [];
 
 	switch(prefArray[0]){
 		case 'gender':
@@ -103,7 +103,7 @@ function sortPreferences(){
 	}
 
 	var preSortedOuts = sortOutputs[sortOutputs.length-1];
-	var sortedOut;
+	var sortedOut = [];
 
 	for (let i = 0 ; i < preSortedOuts.length ; i++){
 		for (let j = 0 ; j < preSortedOuts[i].length ; j++){
@@ -117,7 +117,7 @@ function sortPreferences(){
 function sortDistance(array, distance){
 
 	var arr = array;
-	var outArr;
+	var outArr = [];
 	let numSorted = 0;
 	let delta = 0;
 	while (numSorted < len(arr)){
@@ -146,7 +146,7 @@ function sortDistance(array, distance){
 function sortAge(array, age){
 
 	var arr = array;
-	var outArr;
+	var outArr = [];
 	let numSorted = 0;
 	let delta = 0;
 	while (numSorted < len(arr)){
@@ -175,7 +175,7 @@ function sortAge(array, age){
 function sortGender(array, gender){
 
 	var arr = array;
-	var outArr;
+	var outArr = [];
 	let delta = 0;
 
 	let temp;
@@ -211,7 +211,7 @@ Returns array of animals of the selected type
 */
 function selectAnimal(arr, type){
 
-	var outArr;
+	var outArr = [];
 
 	for (let i = 0 ; i < len(arr) ; i++){
 		if (outArr[i].animalType === type){
