@@ -749,10 +749,12 @@ function populateUserPref(){
   document.getElementById('match').style.display='block';
   
   fields.name = 'John Doe';
-  fields.username = 'john_doe@website.come';
+  fields.username = 'john_doe@website.com';
   fields.pref_animal = document.getElementById('pref_animal').value;
   fields.pref_age = document.getElementById('pref_age').value*12;
   fields.pref_gender = document.getElementById('pref_gender').value;
+  fields.pref_gender = "Female";
+  console.log("Pref gender: " + fields.pref_gender);
   fields.gender_weight = 1;
   fields.price_weight = 0;
   fields.age_weight = 8;

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <title>Pet Tinder</title>
+    <meta charset="utf-8">
+    <style></style>
+    <script type="text/javascript" src="user.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div id = "form";>
+    <p style="color:white; text-align:center;">Tell us a little more about yourself:</p>
+    <form id="about" method="POST">
+	<p style="text-align:center; color:white;"><label for="pref_animal">Preferred Animal</label>
+        <select id="pref_animal" name="pref_animal" style="width:200px">
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Fish">Fish</option>
+          <option value="Turtle">Turtle</option>
+          <option value="Horse">Horse</option>
+          <option value="Chicken">Chicken</option>
+          <option value="Kangaroo">Kangaroo</option>
+          <option value="Camel">Camel</option>
+          <option value="Elephant">Elephant</option>
+          <option value="Tiger">Tiger</option>
+          <option value="Giraffe">Giraffe</option>
+	  <option value="Sloth">Sloth</option>
+      </select></p><br>
+	<p style="text-align:center; color:white;"><label for="pref_age">Preferred Age</label>
+		<input type="text" id="pref_age"></p><br>
+  <p style="text-align:center; color:white;"><label for="pref_gender">I'm looking for &nbsp;</label>
+        	<input type="radio" id="pref_gender" value="Male" checked>Male<br>
+		<input type="radio" id="pref_gender" value="Female">Female<br></p>
+	
+	<p style="text-align:center; color:white;"><label for="distance">Within: &nbsp;</label>
+        <select id="distance name="distance" style="width:200px">
+          <option value="5">5 miles</option>
+          <option value="15">15 miles</option>
+          <option value="30">30 miles</option>
+          <option value="50">50 miles</option>
+      </select></p><br>
+    </form>
+  </div>
+
+  <div id = "match"; style = "display: none";>
+    <style>
+      #pet_pic {
+        width:200px;
+        height:250px;
+      }
+	
+      #undo {
+	width:50px;
+	height:50px;
+	-webkit-filter: invert(100%);
+      }
+
+      #nope {
+        width:50px;
+        height:50px;
+      }
+
+      #superlike {
+        width:50px;
+        height:50px;
+      }
+
+      #like {
+        width:50px;
+        height:50px;
+      }
+
+      #mail {
+        width:50px;
+        height:25px;
+      }
+
+    </style>
+    <p style="text-align:center;">
+      <img id="pet_pic" src="img/Camel/1.jpg" alt="pet">
+    </p><br>
+    <p id="name_line" style="text-align:center;  color:white;">Joe Camel, 19</p>
+    <p style="text-align:center;">
+      <img id="undo" src="img/undo.png" alt="undo" onclick="undo()">
+      <img id="nope" src="img/nope.png" alt="nope" onclick="dislike()">
+      <img id="superlike" src="img/super-like.png" alt="superlike" onclick="superLike()">
+      <img id="like" src="img/like.png" alt="like" onclick="like()">
+    </p><br>
+    <p id="bio" style="text-align:center; color:white;">Bio</p><br>
+    <p style="text-align:center;">
+      <img id="mail" src="img/mail.png" alt="mail" onclick="chat()">
+    </p><br>
+  </div>
+
+  <button id = button; onclick = "fetchFirstCard();this.style.display='none';">Find My Forever Pet!</button>
+  </body>
+</html>
