@@ -4,17 +4,17 @@ var cards;
 
 function addCard(name, type, owner, location, bio, age, gender){
 	
-		var newCard = {
-			'animalName' : name,
-			'animalType' : type,
-			'animalOwner' : owner,
-			'animalLocation' : location,
-			'animalBio' : bio,
-			'animalAge' : age,
-			'animalGender' : gender};
-	
-		card.push(newCard);
-	}
+	var newCard = {
+		'animalName' : name,
+		'animalType' : type,
+		'animalOwner' : owner,
+		'animalLocation' : location,
+		'animalBio' : bio,
+		'animalAge' : age,
+		'animalGender' : gender};
+
+	cards.push(newCard);
+}
 
 sortCards(){
 	//Alphabetic sort
