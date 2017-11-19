@@ -354,7 +354,7 @@ function sortDistance(array, distance){
 			 }
 		}
 
-		if (temp.length > 0){
+		if (len(temp) > 0){
 			outArr.push(temp);
 		}
 
@@ -372,7 +372,7 @@ function sortAge(array, age){
 	let numSorted = 0;
 	let delta = 0;
 	while (numSorted < arr.length){
-		
+    
 		let temp = [];
 
 		for ( let i = 0 ; i < arr.length ; i++){
@@ -413,10 +413,10 @@ function sortGender(array, gender){
 	   outArr.push(temp);
    }
 
-  for ( let i = 0 ; i < arr.length ; i++){
-    if (arr[i] != undefined){
-      outArr.push(arr[i]);
-      delete arr[i];
+  for ( let j = 0 ; j < arr.length ; j++){
+    if (arr[j] != undefined){
+      outArr.push(arr[j]);
+      delete arr[j];
     }
   }
 
@@ -492,11 +492,11 @@ function selectDistance(arr, dist){
 
 function resetRelevantCards(){
   relevantCards = [];
-  for(var i = 0; i < cards.length && 1 < 5; i++){
+  for(var i = 0; i < cards.length; i++){
     let x = cards[i].animalType.toLowerCase();
     let y = fields.pref_animal.toLowerCase();
     if(x == y){
-      relevantCards.push(cards[i]);
+      // relevantCards.push(cards[i]);
     }
   }
 
