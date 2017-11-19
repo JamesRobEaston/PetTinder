@@ -17,7 +17,11 @@ var fields = {
   'password' : 'PROTECTED',
   'location' : 'LOCATION',
   'bio' : 'PLACEHOLDER'
-
+  "pref_animal" : "PLACEHOLDER"
+  "age_weight" : "PLACEHOLDER"
+  "gender_weight" : "PLACEHOLDER"
+  "location_weight" : "PLACEHOLDER"
+  
 };
 
 
