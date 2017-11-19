@@ -29,39 +29,40 @@ var card_index = 0;
 var likedPets;
 var superLikedPets;
 var dislikedPets;
+var prefArray[];
 
 /*  FUNCTIONS */
 // these should be self explanatory as well
 
 
-getNext(){
+function getNext(){
   // transition to the next card  
   card_index++;
 }
 
-recommend(mailAddress, pet){
+function recommend(mailAddress, pet){
   // handle recommend
   window.open('mailto:' + mailAddress + '?subject=Your New Pet!&body=Check out ' + pet.name + ', your next best friend!');
 }
 
-like(pet){
+function like(pet){
   // handle 'liking' a pet
   likedPets.push(pet);
 }
 
-superLike(pet){
+function superLike(pet){
   // handle the 'super like', i.e. prioritize when sending matches
   superLikedPets.push(pet);
 }
 
-dislike(pets){
+function dislike(pets){
   // essentially we will just ignore the request here
   dislikedPets.push(pets);
 }
 
 // MAYBE: undo
 // i.e. go to previous pet profile card
-undo(){
+function undo(){
   // go back
   // decrement our counter in which we keep track of the array of Objects
   card_index--;
@@ -71,12 +72,12 @@ undo(){
 //   // handle boosting
 // }
 
-chat(pet){
+function chat(pet){
   // send email!
   window.open('mailto:' + pet.username + '?subject=PetTinder Inquiry');
 }
 
-setFields(name, username, password, location, bio, pref_animal, age_weight, gender_weight, distance_weight){
+function setFields(name, username, password, location, bio, pref_animal, age_weight, gender_weight, distance_weight){
   fields.name = name;
   fields.username = username;
   fields.password = password;
@@ -86,20 +87,59 @@ setFields(name, username, password, location, bio, pref_animal, age_weight, gend
   fields.age_weight = age_weight;
   fields.gender_weight = gender_weight;
   fields.distance_weight = distance_weight;
+  sortPrefArray();
 }
 
-setPrefAnimal(pref_animal){
+function setPrefAnimal(pref_animal){
   fields.pref_animal = pref_animal;
 }
 
-setAgeWeight(age_weight){
+function setAgeWeight(age_weight){
   fields.age_weight = age_weight;
 }
 
-setGenderWeight(gender_weight){
+function setGenderWeight(gender_weight){
   fields.gender_weight = gender_weight;
 }
 
-setDistanceWeight(distance_weight){
+function setDistanceWeight(distance_weight){
   fields.distance_weight = distance_weight;
+}
+
+function sortPrefArray(){
+  if(fields.age_weight > fields.gender_weight){
+    if(fields.age_weight > fields.distance_weight){
+    
+      prefArray.push("age_weight");
+
+      if(fields.distance_weight > fields.gender_weight){
+        prefArray.push("distance_weight");
+        prefArray.push("gender_weight");
+      }
+      else{
+        prefArray.push("gender_weight");
+        prefArray.push("distance_weight");
+      }
+    }
+
+    else
+    {
+      prefArray.push("distance_weight");
+      prefArray.push("age_weight");
+      prefArray.push("gender_weight");
+    }
+
+  }
+
+  else if(fields.distance_weight > fields.gender_weight){
+    prefArray.push("distance_weight");
+    prefArray.push("gender_weight");
+    prefArray.push("age_weight");
+  }
+
+  else{
+    prefArray.push("gender_weight");
+    prefArray.push("distance_weight");
+    prefArray.push("age_weight");
+  }
 }
