@@ -1,86 +1,98 @@
-function sortArray(){
-  let animalAspect = '';
-  if (prefArray[0] === "age"){
-    animalAspect = 'animalAge';
-  }
-  else if(prefArray[0] === "price"){
-    animalAspect = "animalPrice";
-  }
-  else{
-    animalAspect = "animalGender";
-  }
-  bubbleSort(relevantCards,animalAspect, fields["pref_" + prefArray[0]]);
-  let j = 0;
-  let k = 0;
-  let counter = 0;
-  for(let i = 1; i < 3; i++){
-    if (prefArray[i] === "age"){
-      animalAspect = 'animalAge';
-    }
-    else if(prefArray[i] === "price"){
-      animalAspect = "price";
-    }
-    else{
-      animalAspect = "animalGender";
-    }
-    while(j < relevantCards.length){
-      let temp = new Array();
-      temp.push(relevantCards[j]);
-      k = j+1;
-      counter = 0;
-      while(k < relevantCards.length){
-        if(relevantCards[k][animalAspect] === temp[counter][animalAspect]){
-          temp.push(relevantCards[k]);
-          counter++;
-          k++;
-        }
-        else{
-          break;
-        }
-      }
-      bubbleSort(temp, animalAspect, fields["pref_" + prefArray[i]]);
-      for(counter = j; counter < k; counter++){
-        relevantCards[counter] = temp[counter - j];
-      }
-    }
-  }
-}
-
-//array==the array that needs to be sorted, aspect == the attribute to sort by, 
-//prefAspectVal == the preferred value of the aspect
-function bubbleSort(array, aspect, prefAspectVal){
-  if(aspect === "animalAge"){
-    let delta = 0;
-    for(let i = 0; i < array.length; i++){
-      for(let j = 0; j < array.length- i- 1; j++){
-        //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(Math.abs(array[j][animalAge] - delta - prefAspectVal) > Math.abs(array[j][animalAge] - delta - prefAspectVal)){
-          swap(array, j , j+1);
-        }
-        delta++;
-      }
-    }
-  }
-  
-  if(aspect ==="animalGender"){
-    for(let i = 0; i < array.length; i++){
-      for(let j = 0; j < array.length- i- 1; j++){
-        //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(array[j][animalGender] === prefAspectVal && array[j+1][animalGender] !== prefAspectVal){
-          swap(array, j , j+1);
-        }
-      }
-    }
-  }
-
-  else{
-    for(let i = 0; i < array.length; i++){
-      for(let j = 0; j < array.length- i- 1; j++){
-        //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(array[j][price] > array[j+1][price]){
-          swap(array, j , j+1);
-        }
-      }
-    }
-  }
-}
+var cards = 
+[ {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 96, 'animalGender' : "MALE", 'image' : 'img/Camel/1.jpg', 'price' : 6500},
+  {'animalName' : 'Russel', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Hartsville', 'animalBio' : 'Been used for petting zoos and nativity scenes. Leads she raised several calves, last one,weaned about 8 months ago. Please contact us for further information.', 'animalAge' : 156, 'animalGender' : 'Female', 'image' : 'img/Camel/2.jpg', 'price' : 8000},
+  {'animalName' : 'Tim', 'animalType' : 'Camel', 'animalOwner': '', 'animalLocation' : 'McKee', 'animalBio' : 'I have a 1.5 year old camel for sale. He has been used in a petting zoo all Fall and is ready to move on to a new home. He is very gentle and loves to eat out of your hand. Call or text at 606-438-9128 with any questions. I’m asking 5000 or may trade to some cattle.', 'animalAge' : 18, 'animalGender' : 'Male', 'image' : 'img/camel/10.jpg', 'price' : 0},
+  {'animalName' : 'Matt Yoder' , 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Mount Hope', 'animalBio' : 'on the bottle\n$4500', 'animalAge' : 1, 'animalGender' : 'Male', 'image' : 'img/Camel/16.jpg', 'price' : 4500},
+  {'animalName' : 'Karl Mogensen', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Natural Bridge', 'animalBio' : 'Dromedary camel male born 10-4-2017. Bottle fed, super nice. $4000 Call 540-460-7158\nGreat for Christmas shows and petting zoos', 'animalAge' : 1, 'animalGender' : 'Male', 'image' : 'img/Camel/18.jpg', 'price' : 4000},
+  {'animalName' : 'Camille', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Sikeston', 'animalBio' : "Camille has been doing rides for about 5 years, she's had 3 calves and is currently in with two bull camels. She is trained to kush, hobble trained, loads up in a trailer easy. She is almost 7 foot tall she is a big girl. Asking $16,000 please call or text for any further information or photos. Serious inquires only!", 'animalAge' : 132, 'animalGender' : 'Female', 'image' : 'img/Camel/3.jpg', 'price' : 16000},
+  {'animalName' : 'Chris', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Minnesota', 'animalBio' : "Will lead and kush for any amateur, loads and trailers easy. Doesn't mind the weight of smalll children on his back. Get him a saddle and he'll absolutely make a great ride camel. $6,000", 'animalAge' : 24, 'animalGender' : 'Male', 'image' : 'img/Camel/15.jpg', 'price' : 6000},
+  {'animalName' : 'Mindy', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Tazewell', 'animalBio' : "Mindy is a five month old white female Bactrian Camel\nShe has a white mother and father\nShe is being bottle fed", 'animalAge' : 5, 'animalGender' : 'Female', 'image' : 'img/Camel/17.jpg', 'price' : 12000},
+  {'animalName' : 'Carla Meadors', 'animalType' : 'Kangaroo', 'animalOwner' : "", 'animalLocation' : "Florida", 'animalBio' : 'Most have been in a petting zoo and are tame.', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/1.jpg', 'price' : 9000},
+  {'animalName' : 'Billy', 'animalType' : 'Antelope', 'animalOwner' : "", 'animalLocation' : 'Africa', 'animalBio' : 'What do you think? He does antelope things' , 'animalAge' : 15, 'animalGender' : 'Male', 'image' : 'img/Antelope/1.jpg', 'price' : 3000},
+  {'animalName' : 'Jane', 'animalType' : 'Sloth', 'animalOwner' : "", 'animalLocation' : 'Frankfort, Germany', 'animalBio' : 'Enjoys long walks by the beach and hanging from trees.', 'animalAge' : 12, 'animalGender' : 'Female', 'image' : 'img/Sloth/1.jpg', 'price' : 2000},
+  {'animalName' : 'Horton', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : 'Horton enjoys hopping and listening to whos.', 'animalAge' : 14, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/2.jpg', 'price' : 1000},
+  {'animalName' : 'Vitali Akhramenko', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Sydney', 'animalBio' : 'Here\'s a picture of your future kangaroo kickin the shit out of another kangaroo.', 'animalAge' : 34, 'animalGender' : 'Female', 'image' : 'img/kangaroo/3.jpg', 'price' : 100000},
+  {'animalName' : 'Jack', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : 'Friendly and enjoys cold ones. Doesn\'t (typically) bite. House trained.', 'animalAge' : 38, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/4.jpg', 'price' : 500},
+  {'animalName' : 'Albert', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Kansas', 'animalBio' : 'He is strong and an effective laborer.', 'animalAge' : 30, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/5.jpg', 'price' : 2500},
+  {'animalName' : 'Franky', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'A HUGE kangaroo with a distinctive torn ear and "big pecs" is terrorising a neighbourhood.', 'animalAge' : 20, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/6.jpg', 'price' : 7000},
+  {'animalName' : 'Donald', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : "Who doesn't want a Kangaroo?", 'animalAge' : 24, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/7.jpg', 'price' : 1000},
+  {'animalName' : 'Bertha', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Sydney', 'animalBio' : "Also known as 'Big Bertha' in the ring. She is the perfect boxing partner.", 'animalAge' : 30, 'animalGender' : 'Female', 'image' : 'img/Kangaroo/8.jpg', 'price' : 4000},
+  {'animalName' : 'Dorg', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : "Please help. Dorg the unstoppable destroyed my entire village and I can't contain him.", 'animalAge' : 18, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/9.jpg', 'price' : 1},
+  {'animalName' : 'Nicholas', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : 'Nicholas is the love of my life, but if you love somethin you must let them go. I love you Nicholas, Goodbye.', 'animalAge' : 7, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/10.jpg', 'price' : 900},
+  {'animalName' : 'Igor', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : '', 'animalAge' : 35, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/11.jpg', 'price' : 3750},
+  {'animalName' : 'Johannes', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : '', 'animalAge' : 23, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/12.jpg', 'price' : 3891},
+  {'animalName' : 'Kate', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : '', 'animalAge' : 47, 'animalGender' : 'Female', 'image' : 'img/Kangaroo/13.jpg', 'price' : 1901},
+  {'animalName' : 'Kangaroo Jack', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : 'This Kangaroo stole my jacket with all of my money in it. Please take him.', 'animalAge' : 22, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/14.jpg', 'price' : -10},
+  {'animalName' : 'Francis', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : '', 'animalAge' : 15, 'animalGender' : 'Female', 'image' : 'img/Kangaroo/15.jpg', 'price' : 1905},
+  {'animalName' : 'Kelsey', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : '', 'animalAge' : 20, 'animalGender' : 'Female', 'image' : 'img/Kangaroo/16.jpg', 'price' : 4000},
+  {'animalName' : 'Maisy', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : '', 'animalAge' : 31, 'animalGender' : 'Female', 'image' : 'img/Kangaroo/17.jpg', 'price' : 5050},
+  {'animalName' : 'Muki', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : '', 'animalAge' : 11, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/18.jpg', 'price' : 10000},
+  {'animalName' : 'Francois', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : '', 'animalAge' : 20, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/19.jpg', 'price' : 3060},
+  {'animalName' : 'Louis', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : '', 'animalAge' : 33, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/20.jpg', 'price' : 1600},
+  {'animalName' : 'Doge', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : "Doge is one-of-a-kind. I'm giving you a steal", 'animalAge' : 24, 'animalGender' : 'Male', 'image' : 'img/Dog/1.jpg', 'price' : 10000000},
+  {'animalName' : 'Jon', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : "Jon is the perfect K9 dog, he can smell up to 9 K's from a mile away!", 'animalAge' : 32, 'animalGender' : 'Male', 'image' : 'img/Dog/2.jpg', 'price' : 400},
+  {'animalName' : 'Stephen', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : 'He is a good boy.', 'animalAge' : 15, 'animalGender' : 'Male', 'image' : 'img/Dog/3.jpg', 'price' : 1200},
+  {'animalName' : 'Jean', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : "Jean's first name is Billy and he is not my lover", 'animalAge' : 47, 'animalGender' : 'Male', 'image' : 'img/Dog/4.jpg', 'price' : 850},
+  {'animalName' : 'Anthony', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : 'He can walk like a hooman. Come on now.', 'animalAge' : 37, 'animalGender' : 'Male', 'image' : 'img/Dog/5.jpg', 'price' : 700},
+  {'animalName' : 'Tim', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'This is Tim flying! He is a flying doggo.', 'animalAge' : 27, 'animalGender' : 'Male', 'image' : 'img/Dog/6.jpg', 'price' : 3000},
+  {'animalName' : 'Ivan', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : 'Rabies!', 'animalAge' : 63, 'animalGender' : 'Male', 'image' : 'img/Dog/7.jpg', 'price' : 600},
+  {'animalName' : 'Vladimir', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'He is also known as the living marshmellow.', 'animalAge' : 23, 'animalGender' : 'Male', 'image' : 'img/Dog/8.jpg', 'price' : 400},
+  {'animalName' : 'Sergei', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : "Я настоящая собака, а не бот.", 'animalAge' : 52, 'animalGender' : 'Male', 'image' : 'img/Dog/9.jpg', 'price' : 20},
+  {'animalName' : 'Robert', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'Also known as the bone shredder', 'animalAge' : 15 ,'animalGender' : 'Male', 'image' : 'img/Dog/10.jpg', 'price' : 800},
+  {'animalName' : 'Franklin', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'Franklin is a sweet dog; be carefule though, she is often mistaked for a cloud.', 'animalAge' : 35, 'animalGender' : 'Male', 'image' : 'img/Dog/11.jpg', 'price' : 150},
+  {'animalName' : 'Jackie', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : 'Jackie is a lover and likes to think she is a lap dog.', 'animalAge' : 27, 'animalGender' : 'Female', 'image' : 'img/Dog/12.jpg', 'price' : 250},
+  {'animalName' : 'Luna', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'Monkey not included.', 'animalAge' : 16, 'animalGender' : 'Female', 'image' : 'img/Dog/13.jpg', 'price' : 0},
+  {'animalName' : 'Maisy', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : 'Maisy likes long walks and the beach and to stare off into the distance.', 'animalAge' : 36, 'animalGender' : 'Female', 'image' : 'img/Dog/14.jpg', 'price' : 830},
+  {'animalName' : 'Generic dog', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'Generic Dog is good dog. Plz luv.', 'animalAge' : 35, 'animalGender' : 'Female', 'image' : 'img/Dog/15.jpg', 'price' : 900},
+  {'animalName' : 'Bitey dog', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'Bitey Dog is almost as savage as your mom.', 'animalAge' : 25, 'animalGender' : 'Female', 'image' : 'img/Dog/16.jpg', 'price' : 370},
+  {'animalName' : 'Megan', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : 'Wut du u wunt hooman?', 'animalAge' : 26, 'animalGender' : 'Female', 'image' : 'img/Dog/17.jpg', 'price' : 90},
+  {'animalName' : 'Kate', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : 'Kate is a playful, fun-loving best friend!', 'animalAge' : 15, 'animalGender' : 'Female', 'image' : 'img/Dog/18.jpg', 'price' : 560},
+  {'animalName' : 'Christine', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'Christine is a wonderful loving dog, but she is very protective!', 'animalAge' : 26, 'animalGender' : 'Female', 'image' : 'img/Dog/19.jpg', 'price' : 62},
+  {'animalName' : 'Paula', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Los Angeles', 'animalBio' : 'Paula will often disapear for days at a time, but when shes home she is wonderful!', 'animalAge' : 62, 'animalGender' : 'Female', 'image' : 'img/Dog/20.jpg', 'price' : 98},
+  {'animalName' : 'Hubert', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : 'Does anyone actually read these?', 'animalAge' : 15, 'animalGender' : 'Female', 'image' : 'img/Dog/21.jpg', 'price' : 320},
+  {'animalName' : 'Kylie', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Los Angeles', 'animalBio' : 'Kylie loves water, she swims whenever she cans and sometimes plays with the water!', 'animalAge' : 22, 'animalGender' : 'Female', 'image' : 'img/Dog/22.jpg', 'price' : 20},
+  {'animalName' : 'Mitch', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : 'Mitch is a wonderfule friend and often makes the nights feel less lonely. He is not needy and would be good in any home.', 'animalAge' : 17, 'animalGender' : 'Male', 'image' : 'img/Turtle/1.jpg', 'price' : 800},
+  {'animalName' : 'John', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : 'John has a great sense of humor! Every time you love him he pretends to not love you and hides in his shell...haha!', 'animalAge' : 14, 'animalGender' : 'Male', 'image' : 'img/Turtle/2.jpg', 'price' : 700},
+  {'animalName' : 'Luke', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : "Luke is a great pet! However, I must warn you, do NOT try to walk him. It doesn't work out well", 'animalAge' : 12, 'animalGender' : 'Male', 'image' : 'img/Turtle/3.jpg', 'price' : 5020},
+  {'animalName' : 'Paul', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : "They say Paul's skin is made from obsidian, but do not take him out at night. You won't see him for days.", 'animalAge' : 17, 'animalGender' : 'Male', 'image' : 'img/Turtle/4.jpg', 'price' : 100},
+  {'animalName' : 'Will', 'animalType' : 'Turtl', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 13, 'animalGender' : 'Male', 'image' : 'img/Turtle/5.jpg', 'price' : 10000},
+  {'animalName' : 'Shelly', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 18, 'animalGender' : 'Female', 'image' : 'img/Turtle/6.jpg', 'price' : 22},
+  {'animalName' : 'Courtney', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 13, 'animalGender' : 'Female', 'image' : 'img/Turtle/7.jpg', 'price' : 12},
+  {'animalName' : 'Sarah', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 17, 'animalGender' : 'Female', 'image' : 'img/Turtle/8.jpg', 'price' : 1000},
+  {'animalName' : 'Abby', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 11, 'animalGender' : 'Female', 'image' : 'img/Turtle/9.jpg', 'price' : 15},
+  {'animalName' : 'Kathy', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 18, 'animalGender' : 'Female', 'image' : 'img/Turtle/10.jpg', 'price' : 3000},
+  {'animalName' : 'Ellen', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 13, 'animalGender' : 'Female', 'image' : 'img/Turtle/11.jpg', 'price' : 100},
+  {'animalName' : 'Frank', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'Male', 'image' : 'img/Cat/1.jpg', 'price' : 700},
+  {'animalName' : 'Don', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 25, 'animalGender' : 'Male', 'image' : 'img/Cat/2.jpg', 'price' : 100},
+  {'animalName' : 'Joe', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 27, 'animalGender' : 'Male', 'image' : 'img/Cat/3.jpg', 'price' : 0},
+  {'animalName' : 'Walter', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 20, 'animalGender' : 'Male', 'image' : 'img/Cat/4.jpg', 'price' : .50},
+  {'animalName' : 'Martin', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'Male', 'image' : 'img/Cat/5.jpg', 'price' : 300},
+  {'animalName' : 'Isaac', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 26, 'animalGender' : 'Male', 'image' : 'img/Cat/6.jpg', 'price' : 10000},
+  {'animalName' : 'Jim', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 28, 'animalGender' : 'Male', 'image' : 'img/Cat/7.jpg', 'price' : 9200},
+  {'animalName' : 'Sally', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'Female', 'image' : 'img/Cat/8.jpg', 'price' : 34},
+  {'animalName' : 'Francine', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'Female', 'image' : 'img/Cat/9.jpg', 'price' : 2000},
+  {'animalName' : 'Roxanne', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 22, 'animalGender' : 'Female', 'image' : 'img/Cat/10.jpg', 'price' : 20},
+  {'animalName' : 'Juliet', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 25, 'animalGender' : 'Female', 'image' : 'img/Cat/11.jpg', 'price' : 300},
+  {'animalName' : 'Oliver', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'Female', 'image' : 'img/Cat/12.jpg', 'price' : 7},
+  {'animalName' : 'Amanda', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'Female', 'image' : 'img/Cat/13.jpg', 'price' : 10},
+  {'animalName' : 'Bob', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/1.jpg', 'price' : 15},
+  {'animalName' : 'Ken', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/2.jpg', 'price' : 300},
+  {'animalName' : 'Lee', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/3.jpg', 'price' : 3},
+  {'animalName' : 'Dob', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/4.jpg', 'price' : 100},
+  {'animalName' : 'Dory', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'Dory is currently searching for her parents, please help her.', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/5.jpg', 'price' : 10},
+  {'animalName' : 'Harry', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : "Harry has a heart of gold, he is the best dang fish you'll ever see.", 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/6.jpg', 'price' : 10},
+  {'animalName' : 'Cindy', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : "This is Cindy the shark, she's a great shark and has pleged that fish are friends, not food.", 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/7.jpg', 'price' : 92},
+  {'animalName' : 'Jane', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'Jane is a true beaut, she is the Megan Fox of fish', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/8.jpg', 'price' : 72.3},
+  {'animalName' : 'Mary', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'This where you put lost pets right? Please help my find Mary, my parents said that they sent her to the farm but I think she just got lost! Ill give you an award!, 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/9.jpg', 'price' : 2},
+  {'animalName' : 'Donna', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : "Donna reminds you of your mom, doesn't she?", 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/10.jpg', 'price' : 1000},
+  {'animalName' : 'Delilah', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'Delilah is an excellent sword for fighting; be careful though, a fish as fiesty as her is not meant for kids.', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/11.jpg', 'price' : 10},
+  {'animalName' : 'Jay', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/12.jpg', 'price' : 30},
+  {'animalName' : 'Deke', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/13.jpg', 'price' : 1},
+  {'animalName' : 'Eli', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/14.jpg', 'price' : 1000},
+  {'animalName' : 'Nick', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/15.jpg', 'price' : 500},
+  {'animalName' : 'Michael', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Male', 'image' : 'img/Fish/16.jpg', 'price' : 14000000},
+  {'animalName' : 'Julie', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/17.jpg', 'price' : 7000},
+  {'animalName' : 'Janet', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/18.jpg', 'price' : 500},
+  {'animalName' : 'Ellen', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/19.jpg', 'price' : 2000},
+  {'animalName' : 'Eileen', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/20.jpg', 'price' : 100}
+];
