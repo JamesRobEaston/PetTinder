@@ -43,7 +43,7 @@ function getNext(){
   
   document.getElementById('pet_pic').src = card.image;
   
-  var info = "" + card.animalName + ", " card.animalGender +", "+ card.animalAge;
+  var info = "" + card.animalName + ", " + card.animalGender +", "+ card.animalAge;
   info += "<br>" + card.animalType + "<br>";
   info += "" + card.animalLocation + "<br>"; 
   info += "" + card.animalBio + "<br>";
