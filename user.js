@@ -31,7 +31,7 @@ var card_index = 0;
 var likedPets;
 var superLikedPets;
 var dislikedPets;
-var prefArray[];
+var prefArray;
 
 /*  FUNCTIONS */
 // these should be self explanatory as well
@@ -51,18 +51,21 @@ function like(pet){
   // handle 'liking' a pet
   likedPets.push(pet);
   card_index++;
+  getNext();
 }
 
 function superLike(pet){
   // handle the 'super like', i.e. prioritize when sending matches
   superLikedPets.push(pet);
   card_index++;
+  getNext();
 }
 
 function dislike(pets){
   // essentially we will just ignore the request here
   dislikedPets.push(pets);
   card_index++;
+  getNext()
 }
 
 // MAYBE: undo
@@ -71,6 +74,7 @@ function undo(){
   // go back
   // decrement our counter in which we keep track of the array of Objects
   card_index--;
+  getNext();
 }
 
 // boost(){
