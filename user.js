@@ -16,10 +16,12 @@ var fields = {
   'username' : 'USER', //Email address of user
   'password' : 'PROTECTED',
   'location' : 'LOCATION',
-  'bio' : 'PLACEHOLDER'
-  "pref_animal" : "PLACEHOLDER"
-  "age_weight" : "PLACEHOLDER"
-  "gender_weight" : "PLACEHOLDER"
+  'bio' : 'PLACEHOLDER',
+  "pref_animal" : "PLACEHOLDER",
+  "pref_age" : "PLACEHOLDER",
+  "pref_gender" : "PLACEHOLDER",
+  "age_weight" : "PLACEHOLDER",
+  "gender_weight" : "PLACEHOLDER",
   "distance_weight" : "PLACEHOLDER"
 
 };
@@ -37,7 +39,7 @@ var prefArray[];
 
 function getNext(){
   // transition to the next card  
-  card_index++;
+
 }
 
 function recommend(mailAddress, pet){
@@ -48,16 +50,19 @@ function recommend(mailAddress, pet){
 function like(pet){
   // handle 'liking' a pet
   likedPets.push(pet);
+  card_index++;
 }
 
 function superLike(pet){
   // handle the 'super like', i.e. prioritize when sending matches
   superLikedPets.push(pet);
+  card_index++;
 }
 
 function dislike(pets){
   // essentially we will just ignore the request here
   dislikedPets.push(pets);
+  card_index++;
 }
 
 // MAYBE: undo
@@ -84,6 +89,7 @@ function setFields(name, username, password, location, bio, pref_animal, age_wei
   fields.location = location;
   fields.bio = bio;
   fields.pref_animal = pref_animal;
+
   fields.age_weight = age_weight;
   fields.gender_weight = gender_weight;
   fields.distance_weight = distance_weight;
@@ -143,3 +149,44 @@ function sortPrefArray(){
     prefArray.push("age_weight");
   }
 }
+
+function resetRelevantCards(){
+  for(var i = 0; i < len(cards); i++){
+    let x = cards[i].animalType.toLowerCase();
+    let y = fields.pref_animal.toLowerCase();
+    if(x == y){
+      relevantCards.push(cards[i]);
+    }
+  }
+}
+
+var cards = 
+[ {'animalName' : 'Julio osorio', 'animalType' : Camel, 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 8, 'animalGender' : "MALE", 'image' : '/img/Camel/1.jpg'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+
+];
+
