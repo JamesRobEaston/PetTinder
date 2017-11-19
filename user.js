@@ -67,7 +67,7 @@ var cards =
   {'animalName' : 'Muki', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : '', 'animalAge' : 11, 'animalGender' : 'MALE', 'image' : 'img/Kangaroo/18.jpg', 'price' : 10000},
   {'animalName' : 'Francois', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'London', 'animalBio' : '', 'animalAge' : 20, 'animalGender' : 'MALE', 'image' : 'img/Kangaroo/19.jpg', 'price' : 3060},
   {'animalName' : 'Louis', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : '', 'animalAge' : 33, 'animalGender' : 'MALE', 'image' : 'img/Kangaroo/20.jpg', 'price' : 1600},
-  {'animalName' : 'Oliver', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : "Doge is one-of-a-kind. I'm giving you a steal", 'animalAge' : 24, 'animalGender' : 'MALE', 'image' : 'img/Dog/1.jpg', 'price' : 10000000},
+  {'animalName' : 'Doge', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : "Doge is one-of-a-kind. I'm giving you a steal", 'animalAge' : 24, 'animalGender' : 'MALE', 'image' : 'img/Dog/1.jpg', 'price' : 10000000},
   {'animalName' : 'Jon', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : '', 'animalAge' : 32, 'animalGender' : 'MALE', 'image' : 'img/Dog/2.jpg', 'price' : 400},
   {'animalName' : 'Stephen', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : 'He is a good boy.', 'animalAge' : 15, 'animalGender' : 'MALE', 'image' : 'img/Dog/3.jpg', 'price' : 1200},
   {'animalName' : 'Jean', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : '', 'animalAge' : 47, 'animalGender' : 'MALE', 'image' : 'img/Dog/4.jpg', 'price' : 850},
@@ -111,7 +111,7 @@ var cards =
   {'animalName' : 'Francine', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'FEMALE', 'image' : 'img/Cat/9.jpg', 'price' : 2000},
   {'animalName' : 'Roxanne', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 22, 'animalGender' : 'FEMALE', 'image' : 'img/Cat/10.jpg', 'price' : 20},
   {'animalName' : 'Juliet', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 25, 'animalGender' : 'FEMALE', 'image' : 'img/Cat/11.jpg', 'price' : 300},
-  {'animalName' : 'Olivia', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'FEMALE', 'image' : 'img/Cat/12.jpg', 'price' : 7},
+  {'animalName' : 'Oliver', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'FEMALE', 'image' : 'img/Cat/12.jpg', 'price' : 7},
   {'animalName' : 'Amanda', 'animalType' : 'Cat', 'animalOwner' : '', 'animalLocation' : 'Portland', 'animalBio' : '', 'animalAge' : 21, 'animalGender' : 'FEMALE', 'image' : 'img/Cat/13.jpg', 'price' : 10},
   {'animalName' : 'Bob', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'MALE', 'image' : 'img/Fish/1.jpg', 'price' : 15},
   {'animalName' : 'Ken', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'MALE', 'image' : 'img/Fish/2.jpg', 'price' : 300},
@@ -750,9 +750,9 @@ function populateUserPref(){
   fields.name = 'John Doe';
   fields.username = 'john_doe@website.come';
   fields.pref_animal = document.getElementById('pref_animal').value;
-  fields.pref_age = document.getElementById('pref_age').value;
+  fields.pref_age = document.getElementById('pref_age').value*12;
   fields.pref_gender = document.getElementById('pref_gender').value;
-  fields.gender_wieght = 1;
+  fields.gender_weight = 1;
   fields.price_weight = 0;
   fields.age_weight = 8;
   
