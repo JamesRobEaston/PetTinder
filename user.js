@@ -89,7 +89,7 @@ var cards =
   {'animalName' : 'Paula', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Los Angeles', 'animalBio' : '', 'animalAge' : 62, 'animalGender' : 'Female', 'image' : 'img/Dog/20.jpg', 'price' : 98},
   {'animalName' : 'Hubert', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : '', 'animalAge' : 15, 'animalGender' : 'Female', 'image' : 'img/Dog/21.jpg', 'price' : 320},
   {'animalName' : 'Kylie', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Los Angeles', 'animalBio' : '', 'animalAge' : 22, 'animalGender' : 'Female', 'image' : 'img/Dog/22.jpg', 'price' : 20},
-  {'animalName' : 'Mitch', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 17, 'animalGender' : 'Male', 'image' : 'img/Turtle/1.jpg', 'price' : 800},
+  {'animalName' : 'Mitch', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : ' ', 'animalAge' : 17, 'animalGender' : 'Male', 'image' : 'img/Turtle/1.jpg', 'price' : 800},
   {'animalName' : 'John', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 14, 'animalGender' : 'Male', 'image' : 'img/Turtle/2.jpg', 'price' : 700},
   {'animalName' : 'Luke', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 12, 'animalGender' : 'Male', 'image' : 'img/Turtle/3.jpg', 'price' : 5020},
   {'animalName' : 'Paul', 'animalType' : 'Turtle', 'animalOwner' : '', 'animalLocation' : 'Florida', 'animalBio' : '', 'animalAge' : 17, 'animalGender' : 'Male', 'image' : 'img/Turtle/4.jpg', 'price' : 100},
