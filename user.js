@@ -171,7 +171,9 @@ function getNext(){
 }
 
 function fetchFirstCard(){
+  populateUserPref();
   resetRelevantCards();
+  sortPrefArray();
   sortArray();
   card_index = 0;
   getNext();
@@ -733,6 +735,3 @@ function populateUserPref(){
 
 //Populate user preferences
 //populateUserPref();
-
-// update the display
-fetchFirstCard();
