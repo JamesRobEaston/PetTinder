@@ -752,7 +752,6 @@ function populateUserPref(){
   fields.pref_animal = document.getElementById('pref_animal').value;
   fields.pref_age = document.getElementById('pref_age').value*12;
   fields.pref_gender = document.getElementById('pref_gender').value;
-  fields.pref_gender = "Female";
   console.log("Pref gender: " + fields.pref_gender);
   var x = document.getElementById('sortby').value;
   console.log("Recieved priority: " + x);
