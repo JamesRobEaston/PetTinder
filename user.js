@@ -39,7 +39,7 @@ var prefArray = [];
 // update the display
 function getNext(){
   // transition to the next card  
-  var card = cards[card_index];
+  var card = relevantCards[card_index];
   
   document.getElementById('pet_pic').src = card.image;
   
@@ -49,6 +49,13 @@ function getNext(){
   info += "" + card.animalBio + "<br>";
   
   document.getElementById('bio').innerHTML = info;
+}
+
+function fetchFirstCard(){
+  resetRelevantCards();
+  sortPreferences();
+  card_index = 0;
+  getNext();
 }
 
 function recommend(mailAddress, pet){
