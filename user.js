@@ -555,17 +555,22 @@ function sortArray(){
     console.log("TARGET GENDER: " + fields.pref_gender);
     var temp = [];
     for (let a = 0 ; a < relevantCards.length ; a++){
-      if (relevantCards[a] === fields.pref_gender){
+      if (relevantCards[a].animalGender === fields.pref_gender){
         temp.push(relevantCards[a]);
       }
     }
     for (let a = 0 ; a < relevantCards.length ; a++){
-      if (relevantCards[a] !== fields.pref_gender){
+      if (relevantCards[a].animalGender !== fields.pref_gender){
         temp.push(relevantCards[a]);
       }
     }
     relevantCards = [];
     relevantCards = temp;
+
+    for (let b = 0 ; b < relevantCards.length ; b++){
+      console.log("\t\t" + relevantCards[b]);
+    }
+
     // relevantCards = sortGender(relevantCards, fields.pref_gender);
   }
   // var temp_str = "pref_" + prefArray[0];
