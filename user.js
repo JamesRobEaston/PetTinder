@@ -36,7 +36,9 @@ var prefArray = [];
 var relevantCards = new Array();
 
 var cards = 
-[ {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 96, 'animalGender' : "MALE", 'image' : 'img/Camel/1.jpg'},
+[ {'animalName' : ':(', 'animalType' : 'ERROR_OUT_OF_MATCHES', 'animalOwner' : '', 'animalLocation' : ':(', 'animalBio' : ':(', 'animalAge' : -1, 'animalGender' : ':(', 'image' : 'img/Errors/thats_all_folks.jpg'},
+  {'animalName' : ':(', 'animalType' : 'ERROR_NO_ITEMS_MATCHED', 'animalOwner' : '', 'animalLocation' : ':(', 'animalBio' : ':(', 'animalAge' : -1, 'animalGender' : ':(', 'image' : 'img/Errors/no_items.jpg'},
+  {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 96, 'animalGender' : "MALE", 'image' : 'img/Camel/1.jpg'},
   {'animalName' : 'Russel', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Hartsville', 'animalBio' : 'Been used for petting zoos and nativity scenes. Leads she raised several calves, last one,weaned about 8 months ago. Please contact us for further information.', 'animalAge' : 156, 'animalGender' : 'Female', 'image' : 'img/Camel/2.jpg'},
   {'animalName' : 'Tim', 'animalType' : 'Camel', 'animalOwner': '', 'animalLocation' : 'McKee', 'animalBio' : 'I have a 1.5 year old camel for sale. He has been used in a petting zoo all Fall and is ready to move on to a new home. He is very gentle and loves to eat out of your hand. Call or text at 606-438-9128 with any questions. I’m asking 5000 or may trade to some cattle.', 'animalAge' : 18, 'animalGender' : 'Male', 'image' : 'img/camel/10.jpg'},
   {'animalName' : 'Matt Yoder' , 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Mount Hope', 'animalBio' : 'on the bottle\n$4500', 'animalAge' : 1, 'animalGender' : 'Male', 'image' : 'img/Camel/16.jpg'},
@@ -52,21 +54,38 @@ var cards =
   {'animalName' : 'Vitali Akhramenko', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Sydney', 'animalBio' : 'Here\'s a picture of your future kangaroo kickin the shit out of another kangaroo.', 'animalAge' : 34, 'animalGender' : 'Female', 'image' : 'img/kangaroo/3.jpg'},
   {'animalName' : 'Jack', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : 'Friendly and enjoys cold ones. Doesn\'t (typically) bite. House trained.', 'animalAge' : 38, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/4.jpg'},
   {'animalName' : 'Albert', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Kansas', 'animalBio' : 'He is strong and an effective laborer.', 'animalAge' : 30, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/5.jpg'},
-  {'animalName' : 'Franky', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'A HUGE kangaroo with a distinctive torn ear and "big pecs" is terrorising a neighbourhood.', 'animalAge' : 20, 'animalGender' : 'Male', 'image' : '/img'}
+  {'animalName' : 'Franky', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'A HUGE kangaroo with a distinctive torn ear and "big pecs" is terrorising a neighbourhood.', 'animalAge' : 20, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/6.jpg'}
 ];
 
 /*  FUNCTIONS */
 // these should be self explanatory as well
 
+//Populate user preferences
+populateUserPref();
+
 // update the display
 fetchFirstCard();
 
 function getNext(){
-  // transition to the next card  
-  var card = relevantCards[card_index];
   
-  document.getElementById('pet_pic').src = card.image;
+  // transition to the next card
+  var card;
+  if (card_index < relevantCards.length){
+    card = relevantCards[card_index];
+  }else{
+    for (let a = 0 ; a < cards.length ; a++){
+      if (cards[a].animalType == "ERROR_OUT_OF_MATCHES"){
+        card = cards[a];
+      }
+    }
+  }
   
+  if (card != undefined){
+    document.getElementById('pet_pic').src = card.image;
+  }else{
+    document.getElementById('pet_pic').src = 'img/Errors/technical_difficulties.jpg';
+  }
+
   // set top name line
   var name = "" + card.animalName + ", " + card.animalGender +", " + card.animalAge;
   name += "<br>";
@@ -197,7 +216,11 @@ function sortPrefArray(){
   }
 }
 
+/*
+Selects all cards of the correct animal type and loads them into relevant cards
+*/
 function resetRelevantCards(){
+  relevantCards = []; //Clear relevantCards
   for(var i = 0; i < cards.length; i++){
     let x = cards[i].animalType.toLowerCase();
     let y = fields.pref_animal.toLowerCase();
@@ -205,6 +228,7 @@ function resetRelevantCards(){
       relevantCards.push(cards[i]);
     }
   }
+  
 }
 
 /*
@@ -213,7 +237,7 @@ function resetRelevantCards(){
 
 // THIS IS THE FILE THAT HANDLES THE CARD OBJECTS
 
-var cards = 
+/*var cards = 
 [ {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 96, 'animalGender' : "MALE", 'image' : 'img/Camel/1.jpg'},
   {'animalName' : 'Russel', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Hartsville', 'animalBio' : 'Been used for petting zoos and nativity scenes. Leads she raised several calves, last one,weaned about 8 months ago. Please contact us for further information.', 'animalAge' : 156, 'animalGender' : 'Female', 'image' : 'img/Camel/2.jpg'},
   {'animalName' : 'Tim', 'animalType' : 'Camel', 'animalOwner': '', 'animalLocation' : 'McKee', 'animalBio' : 'I have a 1.5 year old camel for sale. He has been used in a petting zoo all Fall and is ready to move on to a new home. He is very gentle and loves to eat out of your hand. Call or text at 606-438-9128 with any questions. I’m asking 5000 or may trade to some cattle.', 'animalAge' : 18, 'animalGender' : 'Male', 'image' : 'img/camel/10.jpg'},
@@ -230,26 +254,27 @@ var cards =
   {'animalName' : 'Vitali Akhramenko', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Sydney', 'animalBio' : 'Here\'s a picture of your future kangaroo kickin the shit out of another kangaroo.', 'animalAge' : 34, 'animalGender' : 'Female', 'image' : 'img/kangaroo/3.jpg'},
   {'animalName' : 'Jack', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Australia', 'animalBio' : 'Friendly and enjoys cold ones. Doesn\'t (typically) bite. House trained.', 'animalAge' : 38, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/4.jpg'},
   {'animalName' : 'Albert', 'animalType' : 'Kangaroo', 'animalOwner' : '', 'animalLocation' : 'Kansas', 'animalBio' : 'He is strong and an effective laborer.', 'animalAge' : 30, 'animalGender' : 'Male', 'image' : 'img/Kangaroo/5.jpg'},
-  {'animalName' : 'Franky', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'A HUGE kangaroo with a distinctive torn ear and "big pecs" is terrorising a neighbourhood.', 'animalAge' : 20, 'animalGender' : 'Male', 'image' : '/img'}
+  {'animalName' : 'Franky', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'A HUGE kangaroo with a distinctive torn ear and "big pecs" is terrorising a neighbourhood.', 'animalAge' : 20, 'animalGender' : 'Male', 'image' : 'img'}
 ];
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'},
-  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+*/
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'},
+  // {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : 'img'}
 
 
 function addCard(name, type, owner, location, bio, age, gender){
@@ -286,7 +311,10 @@ function sortPreferences(){
 			break;
 		case 'distance':
 			sortOutputs.push(sortDistance(relevantCards, fields.pref_distance));
-			break;
+      break;
+    default:
+      sortOutputs.push(sortAge(relevantCards, fields.pref_age)); //Note! This line is executing because the switch cases aren't matching with the prefArray values. Fix this! The sort won't work correctly until you do!
+      break;
 	}
 
 	for (let i = 1 ; i < prefArray.length ; i++){ //Iterate through each preference
@@ -470,6 +498,7 @@ function selectDistance(arr, dist){
 */
 
 function resetRelevantCards(){
+  relevantCards = [];
   for(var i = 0; i < cards.length; i++){
     let x = cards[i].animalType.toLowerCase();
     let y = fields.pref_animal.toLowerCase();
@@ -477,6 +506,17 @@ function resetRelevantCards(){
       relevantCards.push(cards[i]);
     }
   }
+
+  if (relevantCards.length == 0){
+    
+    for(var i = 0; i < cards.length; i++){
+      if(cards[i].animalType.toLowerCase() == 'ERROR_NO_ITEMS_MATCHED'){
+        relevantCards.push(cards[i]);
+      }
+    }
+
+  }
+
 }
 
 //swaps two elements in cards
@@ -484,4 +524,23 @@ function swap(a, b){
 	let temp = cards[a];
 	cards[a] = cards[b];
 	cards[b] = temp;
+}
+
+function populateUserPref(){
+  fields.name = 'John Doe';
+  fields.username = 'john_doe@website.come';
+  fields.pref_animal = 'Kangaroo';
+  fields.age = 20;
+  fields.gender = 'Male';
+  /*'name' : 'PLACEHOLDER',
+  'username' : 'EMAIL',
+  'password' : 'PROTECTED',
+  'location' : 'LOCATION',
+  'bio' : 'PLACEHOLDER',
+  "pref_animal" : "PLACEHOLDER",
+  "pref_age" : "PLACEHOLDER",
+  "pref_gender" : "PLACEHOLDER",
+  "age_weight" : 2,
+  "gender_weight" : 1,
+  "distance_weight" : 0*/
 }
