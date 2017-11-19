@@ -572,7 +572,7 @@ function sortArray(){
       k = j+1;
       counter = 0;
       while(k < relevantCards.length){
-        if(relevantCards[k][animalAspect] === temp[counter][animalAspect]){
+        if(relevantCards[k].animalAspect === temp[counter].animalAspect){
           temp.push(relevantCards[k]);
           counter++;
           k++;
@@ -588,6 +588,11 @@ function sortArray(){
       j = k;
     }
   }
+
+  for (let k = 0 ; k < relevantCards.length ; k++){
+    console.log("\t(" + k + ") Age: " + relevantCards[k].animalAge + " Gender: " + relevantCards[k].animalGender + " Price: " + relevantCards[k].price);
+  }
+
 }
 
 //array==the array that needs to be sorted, aspect == the attribute to sort by, 
@@ -601,7 +606,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(Math.abs(array[j].animalAge - delta - prefAspectVal) > Math.abs(array[j+1].animalAge - delta - prefAspectVal)){
+        if(Math.abs(array[j].animalAge - /*delta -*/ prefAspectVal) > Math.abs(array[j+1].animalAge /*- delta*/ - prefAspectVal)){
           swap(array, j , j+1);
         }
         delta++;
