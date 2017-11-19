@@ -116,37 +116,37 @@ function sortPrefArray(){
   if(fields.age_weight > fields.gender_weight){
     if(fields.age_weight > fields.distance_weight){
     
-      prefArray.push("age_weight");
+      prefArray.push("age");
 
       if(fields.distance_weight > fields.gender_weight){
-        prefArray.push("distance_weight");
-        prefArray.push("gender_weight");
+        prefArray.push("distance");
+        prefArray.push("gender");
       }
       else{
-        prefArray.push("gender_weight");
-        prefArray.push("distance_weight");
+        prefArray.push("gender");
+        prefArray.push("distance");
       }
     }
 
     else
     {
-      prefArray.push("distance_weight");
-      prefArray.push("age_weight");
-      prefArray.push("gender_weight");
+      prefArray.push("distance");
+      prefArray.push("age");
+      prefArray.push("gender");
     }
 
   }
 
   else if(fields.distance_weight > fields.gender_weight){
-    prefArray.push("distance_weight");
-    prefArray.push("gender_weight");
-    prefArray.push("age_weight");
+    prefArray.push("distance");
+    prefArray.push("gender");
+    prefArray.push("age");
   }
 
   else{
-    prefArray.push("gender_weight");
-    prefArray.push("distance_weight");
-    prefArray.push("age_weight");
+    prefArray.push("gender");
+    prefArray.push("distance");
+    prefArray.push("age");
   }
 }
 
@@ -161,7 +161,7 @@ function resetRelevantCards(){
 }
 
 var cards = 
-[ {'animalName' : 'Julio osorio', 'animalType' : Camel, 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 8, 'animalGender' : "MALE", 'image' : '/img/Camel/1.jpg'}
+[ {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 8, 'animalGender' : "MALE", 'image' : '/img/Camel/1.jpg'}
   {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
   {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
   {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
