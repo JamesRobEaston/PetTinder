@@ -73,7 +73,7 @@ var cards =
   {'animalName' : 'Jean', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : '', 'animalAge' : 47, 'animalGender' : 'MALE', 'image' : 'img/Dog/4.jpg', 'price' : 850},
   {'animalName' : 'Anthony', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Toronto', 'animalBio' : 'He can walk like a hooman. Come on now.', 'animalAge' : 37, 'animalGender' : 'MALE', 'image' : 'img/Dog/5.jpg', 'price' : 700},
   {'animalName' : 'Tim', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'He can fly!', 'animalAge' : 27, 'animalGender' : 'MALE', 'image' : 'img/Dog/6.jpg', 'price' : 3000},
-  {'animalName' : 'Ivan', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : '', 'animalAge' : 63, 'animalGender' : 'MALE', 'image' : 'img/Dog/7.jpg', 'price' : 600},
+  {'animalName' : 'Ivan', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : 'Rabies!', 'animalAge' : 63, 'animalGender' : 'MALE', 'image' : 'img/Dog/7.jpg', 'price' : 600},
   {'animalName' : 'Vladimir', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'He is also known as the living marshmellow.', 'animalAge' : 23, 'animalGender' : 'MALE', 'image' : 'img/Dog/8.jpg', 'price' : 400},
   {'animalName' : 'Sergei', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : "Я настоящая собака, а не бот.", 'animalAge' : 52, 'animalGender' : 'MALE', 'image' : 'img/Dog/9.jpg', 'price' : 20},
   {'animalName' : 'Robert', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'Also known as the bone shredder', 'animalAge' : 15 ,'animalGender' : 'MALE', 'image' : 'img/Dog/10.jpg', 'price' : 800},
@@ -554,45 +554,45 @@ function sortArray(){
   }
   var temp_str = "pref_" + prefArray[0];
   bubbleSort(relevantCards,animalAspect, fields.temp_str);
-  let j = 0;
-  let k = 0;
-  let counter = 0;
-  for(let i = 1; i < 3; i++){
-    if (prefArray[i] === "age"){
-      animalAspect = 'animalAge';
-    }
-    else if(prefArray[i] === "price"){
-      animalAspect = "price";
-    }
-    else{
-      animalAspect = "animalGender";
-    }
-    while(j < relevantCards.length){
-      let temp = new Array();
-      temp.push(relevantCards[j]);
-      k = j+1;
-      counter = 0;
-      while(k < relevantCards.length){
-        if(relevantCards[k].animalAspect === temp[counter].animalAspect){
-          temp.push(relevantCards[k]);
-          counter++;
-          k++;
-        }
-        else{
-          break;
-        }
-      }
-      bubbleSort(temp, animalAspect, fields["pref_" + prefArray[i]]);
-      for(counter = j; counter < k; counter++){
-        relevantCards[counter] = temp[counter - j];
-      }
-      j = k;
-    }
-  }
+  // let j = 0;
+  // let k = 0;
+  // let counter = 0;
+  // for(let i = 1; i < 3; i++){
+  //   if (prefArray[i] === "age"){
+  //     animalAspect = 'animalAge';
+  //   }
+  //   else if(prefArray[i] === "price"){
+  //     animalAspect = "price";
+  //   }
+  //   else{
+  //     animalAspect = "animalGender";
+  //   }
+  //   while(j < relevantCards.length){
+  //     let temp = new Array();
+  //     temp.push(relevantCards[j]);
+  //     k = j+1;
+  //     counter = 0;
+  //     while(k < relevantCards.length){
+  //       if(relevantCards[k].animalAspect === temp[counter].animalAspect){
+  //         temp.push(relevantCards[k]);
+  //         counter++;
+  //         k++;
+  //       }
+  //       else{
+  //         break;
+  //       }
+  //     }
+  //     bubbleSort(temp, animalAspect, fields["pref_" + prefArray[i]]);
+  //     for(counter = j; counter < k; counter++){
+  //       relevantCards[counter] = temp[counter - j];
+  //     }
+  //     j = k;
+  //   }
+  // }
 
-  for (let k = 0 ; k < relevantCards.length ; k++){
-    console.log("\t(" + k + ") Age: " + relevantCards[k].animalAge + " Gender: " + relevantCards[k].animalGender + " Price: " + relevantCards[k].price);
-  }
+  // for (let k = 0 ; k < relevantCards.length ; k++){
+  //   console.log("\t(" + k + ") Age: " + relevantCards[k].animalAge + " Gender: " + relevantCards[k].animalGender + " Price: " + relevantCards[k].price);
+  // }
 
 }
 
