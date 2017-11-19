@@ -20,8 +20,8 @@ var fields = {
   "pref_animal" : "PLACEHOLDER"
   "age_weight" : "PLACEHOLDER"
   "gender_weight" : "PLACEHOLDER"
-  "location_weight" : "PLACEHOLDER"
-  
+  "distance_weight" : "PLACEHOLDER"
+
 };
 
 var card_index = 0;
@@ -67,7 +67,30 @@ chat(){
   // send email!
 }
 
-setFields(name, username, password, location, bio){
-  
+setFields(name, username, password, location, bio, pref_animal, age_weight, gender_weight, distance_weight){
+  fields.name = name;
+  fields.username = username;
+  fields.password = password;
+  fields.location = location;
+  fields.bio = bio;
+  fields.pref_animal = pref_animal;
+  fields.age_weight = age_weight;
+  fields.gender_weight = gender_weight;
+  fields.distance_weight = distance_weight;
 }
 
+setPrefAnimal(pref_animal){
+  fields.pref_animal = pref_animal;
+}
+
+setAgeWeight(age_weight){
+  fields.age_weight = age_weight;
+}
+
+setGenderWeight(gender_weight){
+  fields.gender_weight = gender_weight;
+}
+
+setDistanceWeight(distance_weight){
+  fields.distance_weight = distance_weight;
+}
