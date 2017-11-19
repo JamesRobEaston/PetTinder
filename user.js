@@ -36,7 +36,7 @@ var prefArray = [];
 var relevantCards = new Array();
 
 var cards = 
-[ {'animalName' : ':(', 'animalType' : 'ERROR_OUT_OF_MATCHES', 'animalOwner' : '', 'animalLocation' : ':(', 'animalBio' : ':(', 'animalAge' : -1, 'animalGender' : ':(', 'image' : 'img/Errors/thats_all_folks.jpg'},
+[ {'animalName' : ':(', 'animalType' : 'ERROR_OUT_OF_MATCHES', 'animalOwner' : '', 'animalLocation' : ':(', 'animalBio' : ':(', 'animalAge' : -1, 'animalGender' : ':(', 'image' : 'img/Errors/Thats_all_folks.png'},
   {'animalName' : ':(', 'animalType' : 'ERROR_NO_ITEMS_MATCHED', 'animalOwner' : '', 'animalLocation' : ':(', 'animalBio' : ':(', 'animalAge' : -1, 'animalGender' : ':(', 'image' : 'img/Errors/no_items.jpg'},
   {'animalName' : 'Julio Osorio', 'animalType' : 'Camel', 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 96, 'animalGender' : "MALE", 'image' : 'img/Camel/1.jpg'},
   {'animalName' : 'Russel', 'animalType' : 'Camel', 'animalOwner' : '', 'animalLocation' : 'Hartsville', 'animalBio' : 'Been used for petting zoos and nativity scenes. Leads she raised several calves, last one,weaned about 8 months ago. Please contact us for further information.', 'animalAge' : 156, 'animalGender' : 'Female', 'image' : 'img/Camel/2.jpg'},
@@ -83,7 +83,7 @@ function getNext(){
   if (card != undefined){
     document.getElementById('pet_pic').src = card.image;
   }else{
-    document.getElementById('pet_pic').src = 'img/Errors/technical_difficulties.jpg';
+    // document.getElementById('pet_pic').src = 'img/Errors/technical_difficulties.jpg';
   }
 
   // set top name line
@@ -291,13 +291,6 @@ function addCard(name, type, owner, location, bio, age, gender){
 	cards.push(newCard);
 }
 
-/*
-"pref_animal" : "PLACEHOLDER"
-"age_weight" : "PLACEHOLDER"
-"gender_weight" : "PLACEHOLDER"
-"distance_weight" : "PLACEHOLDER"
-*/
-
 function sortPreferences(){
 
 	var sortOutputs = [];
@@ -390,7 +383,7 @@ function sortAge(array, age){
 			 }
 		}
 
-		if (len(temp) > 0){
+		if (temp.length > 0){
 			outArr.push(temp);
 		}
 
@@ -499,7 +492,7 @@ function selectDistance(arr, dist){
 
 function resetRelevantCards(){
   relevantCards = [];
-  for(var i = 0; i < cards.length; i++){
+  for(var i = 0; i < cards.length && 1 < 5; i++){
     let x = cards[i].animalType.toLowerCase();
     let y = fields.pref_animal.toLowerCase();
     if(x == y){
@@ -509,9 +502,9 @@ function resetRelevantCards(){
 
   if (relevantCards.length == 0){
     
-    for(var i = 0; i < cards.length; i++){
-      if(cards[i].animalType.toLowerCase() == 'ERROR_NO_ITEMS_MATCHED'){
-        relevantCards.push(cards[i]);
+    for(var j = 0; j < cards.length; j++){
+      if(cards[j].animalType.toLowerCase() == 'ERROR_NO_ITEMS_MATCHED'){
+        relevantCards.push(cards[j]);
       }
     }
 
@@ -529,7 +522,7 @@ function swap(a, b){
 function populateUserPref(){
   fields.name = 'John Doe';
   fields.username = 'john_doe@website.come';
-  fields.pref_animal = 'Kangaroo';
+  fields.pref_animal = 'Camel';
   fields.age = 20;
   fields.gender = 'Male';
   /*'name' : 'PLACEHOLDER',
