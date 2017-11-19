@@ -13,7 +13,7 @@
 var fields = {
 
   'name' : 'PLACEHOLDER',
-  'username' : 'USER', //Email address of user
+  'username' : 'EMAIL',
   'password' : 'PROTECTED',
   'location' : 'LOCATION',
   'bio' : 'PLACEHOLDER',
@@ -36,10 +36,19 @@ var prefArray = [];
 /*  FUNCTIONS */
 // these should be self explanatory as well
 
-
+// update the display
 function getNext(){
   // transition to the next card  
-
+  var card = cards[card_index];
+  
+  document.getElementById('pet_pic').src = card.image;
+  
+  var info = "" + card.animalName + ", " card.animalGender +", "+ card.animalAge;
+  info += "<br>" + card.animalType + "<br>";
+  info += "" + card.animalLocation + "<br>"; 
+  info += "" + card.animalBio + "<br>";
+  
+  document.getElementById('bio').innerHTML = info;
 }
 
 function recommend(mailAddress, pet){
@@ -51,18 +60,21 @@ function like(pet){
   // handle 'liking' a pet
   likedPets.push(pet);
   card_index++;
+  getNext();
 }
 
 function superLike(pet){
   // handle the 'super like', i.e. prioritize when sending matches
   superLikedPets.push(pet);
   card_index++;
+  getNext();
 }
 
 function dislike(pets){
   // essentially we will just ignore the request here
   dislikedPets.push(pets);
   card_index++;
+  getNext();
 }
 
 // MAYBE: undo
@@ -71,6 +83,7 @@ function undo(){
   // go back
   // decrement our counter in which we keep track of the array of Objects
   card_index--;
+  getNext();
 }
 
 // boost(){
