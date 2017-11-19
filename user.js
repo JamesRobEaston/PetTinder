@@ -155,6 +155,7 @@ function getNext(){
   if (card != undefined){
     document.getElementById('pet_pic').src = card.image;
     document.getElementById('bio').innerHTML = card.animalBio;
+    console.log('New animal should be displayed. Name: ' + card.animalName);
   }else{
     document.getElementById('pet_pic').src = 'img/Errors/technical_difficulties.jpg';
   }
@@ -171,12 +172,18 @@ function getNext(){
 }
 
 function fetchFirstCard(){
+  console.log('A');
   populateUserPref();
+  console.log('B');
   resetRelevantCards();
+  console.log('C');
   sortPrefArray();
+  console.log('D');
   sortArray();
+  console.log('E');
   card_index = 0;
   getNext();
+  console.log('F');
 }
 
 function recommend(mailAddress, pet){
@@ -309,6 +316,13 @@ function sortPrefArray(){
     prefArray.push("price");
     prefArray.push("age");
   }
+
+  var str = 'Sort Pref Array Output: ';
+  for (let a = 0 ; a < prefArray.length ; a++){
+    str = str + ' ' + prefArray[a];
+  }
+
+  console.log(str);
 }
 
 /*
@@ -583,7 +597,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(Math.abs(array[j][animalAge] - delta - prefAspectVal) > Math.abs(array[j][animalAge] - delta - prefAspectVal)){
+        if(Math.abs(array[j].animalAge - delta - prefAspectVal) > Math.abs(array[j][animalAge] - delta - prefAspectVal)){
           swap(array, j , j+1);
         }
         delta++;
@@ -595,7 +609,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(array[j][animalGender] === prefAspectVal && array[j+1][animalGender] !== prefAspectVal){
+        if(array[j].animalGende === prefAspectVal && array[j+1][animalGender] !== prefAspectVal){
           swap(array, j , j+1);
         }
       }
@@ -606,7 +620,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(array[j][price] > array[j+1][price]){
+        if(array[j].price > array[j+1][price]){
           swap(array, j , j+1);
         }
       }
@@ -681,6 +695,11 @@ function selectPrice(arr, dist){
 }
 */
 
+function chat(){
+  // send email!
+  window.open('mailto:' + relevantCards.username + '?subject=PetTinder Inquiry');
+}
+
 function resetRelevantCards(){
   relevantCards = [];
   for(var i = 0; i < cards.length; i++){
@@ -720,6 +739,10 @@ function populateUserPref(){
   fields.pref_animal = document.getElementById('pref_animal').value;
   fields.pref_age = document.getElementById('pref_age').value;
   fields.pref_gender = document.getElementById('pref_gender').value;
+  fields.gender_wieght = 4;
+  fields.price_weight = 1;
+  fields.age_weight = 0;
+  
   /*'name' : 'PLACEHOLDER',
   'username' : 'EMAIL',
   'password' : 'PROTECTED',
