@@ -24,6 +24,7 @@ var fields = {
   
 };
 
+var card_index = 0;
 
 /*  FUNCTIONS */
 // these should be self explanatory as well
@@ -31,6 +32,7 @@ var fields = {
 
 getNext(){
   // transition to the next card  
+  card_index++;
 }
 
 recommend(){
@@ -39,6 +41,7 @@ recommend(){
 
 like(){
   // handle 'liking' a pet
+  
 }
 
 superLike(){
