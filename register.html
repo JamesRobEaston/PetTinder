@@ -5,13 +5,14 @@
   <title>Pet Tinder</title>
   
   <style></style>
-  
+  <script type="text/javascript" src="user.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
     <div id = "form";>
     <p style="color:white; text-align:center;">Tell us a little more about yourself:</p>
     <form id="about" method="POST">
-			<label for="pref_animal">Preferred Animal</label>
+	<label for="pref_animal">Preferred Animal</label>
         <select id="pref_animal" name="pref_animal" style="width:200px">
           <option value="dog">Dog</option>
           <option value="cat">Cat</option>
@@ -62,12 +63,12 @@
         height:50px;
       }
     </style>
-    <script type="text/javascript" src="user.js"></script>
     <p style="text-align:center;">
       <img id="pet_pic" src="img/Camel/1.jpg" alt="pet">
     </p><br>
     <p id="name_line" style="text-align:center;">Joe Camel, 19</p>
     <p style="text-align:center;">
+      <img id="undo" src=img/undo.png" alt="undo" onclick="undo()">
       <img id="nope" src="img/nope.png" alt="nope" onclick="dislike()">
       <img id="superlike" src="img/super-like.png" alt="superlike" onclick="superLike()">
       <img id="like" src="img/like.png" alt="like" onclick="like()">
