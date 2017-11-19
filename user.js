@@ -20,9 +20,10 @@ var fields = {
   "pref_animal" : "PLACEHOLDER",
   "pref_age" : "PLACEHOLDER",
   "pref_gender" : "PLACEHOLDER",
+  "pref_price" : 0,
   "age_weight" : 2,
   "gender_weight" : 1,
-  "distance_weight" : 0
+  "price_weight" : 0
 
 };
 
@@ -60,12 +61,6 @@ var cards =
 /*  FUNCTIONS */
 // these should be self explanatory as well
 
-//Populate user preferences
-populateUserPref();
-
-// update the display
-fetchFirstCard();
-
 function getNext(){
   
   // transition to the next card
@@ -82,6 +77,7 @@ function getNext(){
   
   if (card != undefined){
     document.getElementById('pet_pic').src = card.image;
+    document.getElementById('bio').innerHTML = card.animalBio;
   }else{
     document.getElementById('pet_pic').src = 'img/Errors/technical_difficulties.jpg';
   }
@@ -99,7 +95,7 @@ function getNext(){
 
 function fetchFirstCard(){
   resetRelevantCards();
-  sortPreferences();
+  sortArray();
   card_index = 0;
   getNext();
 }
@@ -148,22 +144,36 @@ function chat(pet){
   window.open('mailto:' + pet.username + '?subject=PetTinder Inquiry');
 }
 
-function setFields(name, username, password, location, bio, pref_animal, age_weight, gender_weight, distance_weight){
+function setFields(name, username, password, location, bio, pref_animal,pref_age, pref_gender, pref_price, age_weight, gender_weight, price_weight){
   fields.name = name;
   fields.username = username;
   fields.password = password;
   fields.location = location;
   fields.bio = bio;
   fields.pref_animal = pref_animal;
-
+  fields.pref_age = pref_age;
+  fields.pref_gender = pref_gender;
+  fields.pref_price = pref_price;
   fields.age_weight = age_weight;
   fields.gender_weight = gender_weight;
-  fields.distance_weight = distance_weight;
+  fields.price_weight = price_weight;
   sortPrefArray();
 }
 
 function setPrefAnimal(pref_animal){
   fields.pref_animal = pref_animal;
+}
+
+function setPrefAge(pref_age){
+  fields.pref_age = pref_age;
+}
+
+function setPrefGender(pref_gender){
+  fields.pref_gender = pref_gender;
+}
+
+function setPrefPrice(pref_price){
+  fields.pref_price = pref_price;
 }
 
 function setAgeWeight(age_weight){
@@ -174,45 +184,45 @@ function setGenderWeight(gender_weight){
   fields.gender_weight = gender_weight;
 }
 
-function setDistanceWeight(distance_weight){
-  fields.distance_weight = distance_weight;
+function setPriceWeight(price_weight){
+  fields.price_weight = price_weight;
 }
 
 function sortPrefArray(){
   if(fields.age_weight > fields.gender_weight){
-    if(fields.age_weight > fields.distance_weight){
+    if(fields.age_weight > fields.price_weight){
     
-      prefArray.push("age_weight");
+      prefArray.push("age");
 
-      if(fields.distance_weight > fields.gender_weight){
-        prefArray.push("distance_weight");
-        prefArray.push("gender_weight");
+      if(fields.price_weight > fields.gender_weight){
+        prefArray.push("price");
+        prefArray.push("gender");
       }
       else{
-        prefArray.push("gender_weight");
-        prefArray.push("distance_weight");
+        prefArray.push("gender");
+        prefArray.push("price");
       }
     }
 
     else
     {
-      prefArray.push("distance_weight");
-      prefArray.push("age_weight");
-      prefArray.push("gender_weight");
+      prefArray.push("price");
+      prefArray.push("age");
+      prefArray.push("gender");
     }
 
   }
 
-  else if(fields.distance_weight > fields.gender_weight){
-    prefArray.push("distance_weight");
-    prefArray.push("gender_weight");
-    prefArray.push("age_weight");
+  else if(fields.price_weight > fields.gender_weight){
+    prefArray.push("price");
+    prefArray.push("gender");
+    prefArray.push("age");
   }
 
   else{
-    prefArray.push("gender_weight");
-    prefArray.push("distance_weight");
-    prefArray.push("age_weight");
+    prefArray.push("gender");
+    prefArray.push("price");
+    prefArray.push("age");
   }
 }
 
@@ -309,8 +319,8 @@ function sortPreferences(){
 		case 'age':	
 			sortOutputs.push(sortAge(relevantCards, fields.pref_age));
 			break;
-		case 'distance':
-			sortOutputs.push(sortDistance(relevantCards, fields.pref_distance));
+		case 'price':
+			sortOutputs.push(sortPrice(relevantCards, fields.pref_price));
       break;
     default:
       sortOutputs.push(sortAge(relevantCards, fields.pref_age)); //Note! This line is executing because the switch cases aren't matching with the prefArray values. Fix this! The sort won't work correctly until you do!
@@ -325,9 +335,11 @@ function sortPreferences(){
 			case 'age':	
 				sortOutputs.push(sortAge(sortOutputs[sortOutputs.length-1], fields.pref_age));
 				break;
-			case 'distance':
-				sortOutputs.push(sortDistance(sortOutputs[sortOutputs.length-1], fields.pref_distance));
+			case 'price':
+				sortOutputs.push(sortPrice(sortOutputs[sortOutputs.length-1], fields.pref_price));
 				break;
+      default:
+        break;
 		}
 	}
 
@@ -343,7 +355,7 @@ function sortPreferences(){
 	return sortedOut;
 }
 
-function sortDistance(array, distance){
+function sortPrice(array, price){
 
 	var arr = array;
 	var outArr = [];
@@ -354,7 +366,7 @@ function sortDistance(array, distance){
 		let temp = [];
 
 		for ( let i = 0 ; i < arr.length ; i++){
-			 if (arr[i] != undefined && (arr[i].animalLocation == distance - delta || arr[i].animalLocation == distance + delta) ){
+			 if (arr[i] != undefined && (arr[i].animalLocation == price - delta || arr[i].animalLocation == price + delta) ){
 				temp.push(arr[i]);
 				delete arr[i];
 				numSorted++;
@@ -384,13 +396,13 @@ function sortAge(array, age){
 
 		for ( let i = 0 ; i < arr.length ; i++){
 			 if (arr[i] != undefined && (arr[i].animalAge == age - delta || arr[i].animalAge == age + delta) ){
-				 temp.push(arr[i]);
-				delete arr[i];
-				numSorted++;
+				  temp.push(arr[i]);
+				  delete arr[i];
+				  numSorted++;
 			 }
 		}
 
-		if (len(temp) > 0){
+		if (temp.length > 0){
 			outArr.push(temp);
 		}
 
@@ -428,6 +440,68 @@ function sortGender(array, gender){
   }
 
 	return outArr;
+}
+
+function sortArray(){
+  if (prefArray[0] === "age"){
+      let animalAspect = 'animalAge';
+  }
+  else if(prefArray[0] === "price"){
+     let animalAspect = "animalPrice";
+  }
+  else{
+    let animalAspect = "animalGender";
+  }
+  bubbleSort(relevantCards,animalAspect, fields["pref_" + prefArray[0]]);
+  let j = 0;
+  let k = 0;
+  let counter = 0;
+  for(let i = 1; i < 3; i++){
+    if (prefArray[i] === "age"){
+      animalAspect = 'animalAge';
+    }
+    else if(prefArray[i] === "price"){
+      animalAspect = "animalPrice";
+    }
+    else{
+      animalAspect = "animalGender";
+    }
+    while(j < relevantCards.length){
+      let temp = new Array();
+      temp.push(relevantCards[j]);
+      k = j+1;
+      counter = 0;
+      while(k < relevantCards.length){
+        if(relevantCards[k][animalAspect] === temp[counter][animalAspect]){
+          temp.push(relevantCards[k]);
+          counter++;
+          k++;
+        }
+        else{
+          break;
+        }
+      }
+      bubbleSort(temp, animalAspect, fields["pref_" + prefArray[i]]);
+      for(counter = j; counter < k; counter++){
+        relevantCards[counter] = temp[counter - j];
+      }
+    }
+  }
+}
+
+//array==the array that needs to be sorted, aspect == the attribute to sort by, 
+//prefAspectVal == the preferred value of the aspect
+function bubbleSort(array, aspect, prefAspectVal){
+  let delta = 0;
+  for(let i = 0; i < array.length; i++){
+    for(let j = 0; j < array.length- i- 1; j++){
+      //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
+      if(Math.abs(array[j][aspect] - delta - prefAspectVal) > Math.abs(array[j][aspect] - delta - prefAspectVal)){
+        swap(array, j , j+1);
+      }
+      delta++;
+    }
+  }
 }
 
 /*
@@ -482,7 +556,7 @@ function selectGender(arr, gender){
 	return outArr;
 }
 
-function selectDistance(arr, dist){
+function selectPrice(arr, dist){
 
 	var outArr;
 	
@@ -520,10 +594,10 @@ function resetRelevantCards(){
 }
 
 //swaps two elements in cards
-function swap(a, b){
-	let temp = cards[a];
-	cards[a] = cards[b];
-	cards[b] = temp;
+function swap(array, a, b){
+	let temp = array[a];
+	array[a] = array[b];
+	array[b] = temp;
 }
 
 function populateUserPref(){
@@ -542,5 +616,11 @@ function populateUserPref(){
   "pref_gender" : "PLACEHOLDER",
   "age_weight" : 2,
   "gender_weight" : 1,
-  "distance_weight" : 0*/
+  "price_weight" : 0*/
 }
+
+//Populate user preferences
+populateUserPref();
+
+// update the display
+fetchFirstCard();
