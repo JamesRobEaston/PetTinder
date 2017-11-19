@@ -2,30 +2,85 @@
 
 <html>
   <head>
-    <title>Pet Tinder</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        .container {
+          width: 950px;
+        }
+      body {
+        background-color: #f6f5f1;
+      }
+      .current-image {
+        position: absolute;
+        z-index:2;
+        width:100%;
+      }
+      .next-image {
+        position: absolute;
+        z-index:1;
+        width:100%;
+      }
+      .back-image {
+        position: absolute;
+        z-index:0;
+        width:100%;
+      }
+    </style>
   </head>
-  <div class="tbg">
-  <div class="theader">
-    <i class="fa fa-cog" aria-hidden="true"></i>
-    <i class="fa fa-comments" aria-hidden="true"></i>
-    <div class="tlogo">
-      <img src="https://worldvectorlogo.com/logos/tinder-1.svg" alt="Tinder Logo" title="Tinder Logo" />
+  <body>
+    <div class="container" style="background-color:#f6f5f1">
+      {% load staticfiles %}
+      <div class="row">
+        <div class="col-xs-2">
+          <img src="{% static "tinder/icon-top-left.jpg" %}" style="width:100%; margin-top:20px;">
+        </div>
+        <div class="col-xs-8">
+          <img src="{% static "tinder/logo.jpg" %}" width="60%" class="img-responsive center-block">
+        </div>
+        <div class="col-xs-2">
+          <img src="{% static "tinder/icon-top-right.svg" %}" style="margin-top:20px; width:100%">
+        </div>
+      </div>
+      <div class="row" style="margin-top:48px" id="photobox">
+        <div class="col-xs-10 col-xs-offset-1">
+          <div class="current-image">
+            <img src="/static/{{image0}}" width="100%" class="img-responsive center-block">
+          </div>
+          <div class="next-image">
+            <img src="/static/{{image1}}" width="100%" class="img-responsive center-block">
+          </div>
+          {% for image in images %}
+          <div class="back-image">
+            <img src="/static/{{image}}" width="100%" class="img-responsive center-block">
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1" style="margin-top:780px">
+          <img src="{% static "tinder/logo-bottom.jpg" %}" width="100%">
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="tbgwrap">
-    <div class="tphoto">
-      <img src="http://www.amicnews.com/wp-content/uploads/2015/04/Sunglasses-Trends-for-Summer-2015.jpg" title="tphoto" alt="Tinder Photo" />
-      <div class="tname">Jane Doe, <span class="age">27</span></div>
-      <div class="tinfo"><i class="fa fa-book" aria-hidden="true"> 0</i><i class="fa fa-users" aria-hidden="true"> 0</i></div>
-    </div>
-    <div class="tcontrols">
-      <div class="tno"><i class="fa fa-times" aria-hidden="true"></i></div>
-      <div class="ti"><i class="fa fa-info" aria-hidden="true"></i></div>
-      <div class="tyes"><i class="fa fa-heart" aria-hidden="true"></i></div>
-    </div>
-  </div>
-  <div class="credit"><a href="http://themakery.jcink.net">Created by Miami</a></div>
-</div>
-
+  <script type="text/javascript">
+    var current_image = $(".current-image")[0];
+    var next_images = $(".next-image, .back-image").toArray();
+    $(function() {
+      $("#photobox").on("swipe", function(event) {
+        var swipe_type = event.swipestart.coords[0] < event.swipestop.coords[0] ? "swiperight" : "swipeleft";
+        var swipe_offset = swipe_type == "swiperight" ? "+1000px" : "-1000px"; 
+        $(".current-image").animate({ "left": swipe_offset }, complete = function() {
+          $(this).removeClass("current-image").addClass("back-image").css({left: ""});
+          next_images.push($(this)[0]); 
+          current_image = next_images.shift();
+          $(current_image).removeClass("next-image").addClass("current-image");
+          $(next_images[0]).removeClass("back-image").addClass("next-image");
+        });
+      });
+    });
+  </script>
+  </body>
 </html>
