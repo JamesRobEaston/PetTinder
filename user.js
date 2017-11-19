@@ -26,6 +26,10 @@ var fields = {
 
 var card_index = 0;
 
+var likedPets;
+var superLikedPets;
+var dislikedPets;
+
 /*  FUNCTIONS */
 // these should be self explanatory as well
 
@@ -35,21 +39,24 @@ getNext(){
   card_index++;
 }
 
-recommend(){
+recommend(mailAddress, pet){
   // handle recommend
+  window.open('mailto:' + mailAddress + '?subject=Your New Pet!&body=Check out ' + pet.name);
 }
 
-like(){
+like(pet){
   // handle 'liking' a pet
-  
+  likedPets.push(pet);
 }
 
-superLike(){
+superLike(pet){
   // handle the 'super like', i.e. prioritize when sending matches
+  superLikedPets.push(pet);
 }
 
-dislike(){
+dislike(pets){
   // essentially we will just ignore the request here
+  dislikedPets.push(pets);
 }
 
 // MAYBE: undo
@@ -57,11 +64,12 @@ dislike(){
 undo(){
   // go back
   // decrement our counter in which we keep track of the array of Objects
+  card_index--;
 }
 
-boost(){
-  // handle boosting
-}
+// boost(){
+//   // handle boosting
+// }
 
 chat(){
   // send email!
