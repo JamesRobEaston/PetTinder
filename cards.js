@@ -16,7 +16,7 @@ function addCard(name, type, owner, location, bio, age, gender){
 	cards.push(newCard);
 }
 
-sortCards(){
+function sortCards(){
 	//Alphabetic sort
 	cards.sort(function(a, b){
         var x = a.animalType.toLowerCase();
@@ -37,7 +37,7 @@ sortCards(){
 }
 
 //swaps two elements in cards
-swap(a, b){
+function swap(a, b){
 	let temp = cards[a];
 	cards[a] = cards[b];
 	cards[b] = temp;
