@@ -133,12 +133,7 @@ var cards =
   {'animalName' : 'Julie', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'FEMALE', 'image' : 'img/Fish/17.jpg'},
   {'animalName' : 'Janet', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'FEMALE', 'image' : 'img/Fish/18.jpg'},
   {'animalName' : 'Ellen', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'FEMALE', 'image' : 'img/Fish/19.jpg'},
-  {'animalName' : 'Eileen', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'FEMALE', 'image' : 'img/Fish/20.jpg'},
-  {'animalName' : '', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'MALE', 'image' : 'img/Fish/.jpg'},
-  {'animalName' : '', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'MALE', 'image' : 'img//.jpg'},
-  {'animalName' : '', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'MALE', 'image' : 'img//.jpg'},
-  {'animalName' : '', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'MALE', 'image' : 'img//.jpg'},
-  {'animalName' : '', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'MALE', 'image' : 'img//.jpg'} 
+  {'animalName' : 'Eileen', 'animalType' : '', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : '', 'animalAge' : 10, 'animalGender' : 'FEMALE', 'image' : 'img/Fish/20.jpg'}
 ];
 
 /*  FUNCTIONS */
