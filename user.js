@@ -161,7 +161,7 @@ function getNext(){
   }
 
   // set top name line
-  var name = "" + card.animalName + ", " + card.animalGender +", " + card.animalAge;
+  var name = "" + card.animalName + ", " + card.animalGender + ", " + card.animalAge;
   name += "<br>";
   
   // set bio
@@ -598,11 +598,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-<<<<<<< HEAD
-        if(Math.abs(array[j].animalAge - delta - prefAspectVal) > Math.abs(array[j][animalAge] - delta - prefAspectVal)){
-=======
         if(Math.abs(array[j].animalAge - delta - prefAspectVal) > Math.abs(array[j+1].animalAge - delta - prefAspectVal)){
->>>>>>> 14784f187c1558f86020f4557eeb880a8d144a32
           swap(array, j , j+1);
         }
         delta++;
@@ -614,11 +610,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-<<<<<<< HEAD
-        if(array[j].animalGende === prefAspectVal && array[j+1][animalGender] !== prefAspectVal){
-=======
-        if(array[j].animalGender === prefAspectVal && array[j+1].animalGender !== prefAspectVal){
->>>>>>> 14784f187c1558f86020f4557eeb880a8d144a32
+        if(array[j].animalGender === prefAspectVal && array[j+1][animalGender] !== prefAspectVal){
           swap(array, j , j+1);
         }
       }
@@ -629,11 +621,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-<<<<<<< HEAD
-        if(array[j].price > array[j+1][price]){
-=======
         if(array[j].price > array[j+1].price){
->>>>>>> 14784f187c1558f86020f4557eeb880a8d144a32
           swap(array, j , j+1);
         }
       }
