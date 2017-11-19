@@ -28,10 +28,10 @@ var fields = {
 
 var card_index = 0;
 
-var likedPets;
-var superLikedPets;
-var dislikedPets;
-var prefArray;
+var likedPets = [];
+var superLikedPets = [];
+var dislikedPets = [];
+var prefArray = [];
 
 /*  FUNCTIONS */
 // these should be self explanatory as well
@@ -51,21 +51,18 @@ function like(pet){
   // handle 'liking' a pet
   likedPets.push(pet);
   card_index++;
-  getNext();
 }
 
 function superLike(pet){
   // handle the 'super like', i.e. prioritize when sending matches
   superLikedPets.push(pet);
   card_index++;
-  getNext();
 }
 
 function dislike(pets){
   // essentially we will just ignore the request here
   dislikedPets.push(pets);
   card_index++;
-  getNext()
 }
 
 // MAYBE: undo
@@ -74,7 +71,6 @@ function undo(){
   // go back
   // decrement our counter in which we keep track of the array of Objects
   card_index--;
-  getNext();
 }
 
 // boost(){
@@ -120,37 +116,37 @@ function sortPrefArray(){
   if(fields.age_weight > fields.gender_weight){
     if(fields.age_weight > fields.distance_weight){
     
-      prefArray.push("age");
+      prefArray.push("age_weight");
 
       if(fields.distance_weight > fields.gender_weight){
-        prefArray.push("distance");
-        prefArray.push("gender");
+        prefArray.push("distance_weight");
+        prefArray.push("gender_weight");
       }
       else{
-        prefArray.push("gender");
-        prefArray.push("distance");
+        prefArray.push("gender_weight");
+        prefArray.push("distance_weight");
       }
     }
 
     else
     {
-      prefArray.push("distance");
-      prefArray.push("age");
-      prefArray.push("gender");
+      prefArray.push("distance_weight");
+      prefArray.push("age_weight");
+      prefArray.push("gender_weight");
     }
 
   }
 
   else if(fields.distance_weight > fields.gender_weight){
-    prefArray.push("distance");
-    prefArray.push("gender");
-    prefArray.push("age");
+    prefArray.push("distance_weight");
+    prefArray.push("gender_weight");
+    prefArray.push("age_weight");
   }
 
   else{
-    prefArray.push("gender");
-    prefArray.push("distance");
-    prefArray.push("age");
+    prefArray.push("gender_weight");
+    prefArray.push("distance_weight");
+    prefArray.push("age_weight");
   }
 }
 
@@ -164,4 +160,33 @@ function resetRelevantCards(){
   }
 }
 
+var cards = 
+[ {'animalName' : 'Julio osorio', 'animalType' : Camel, 'animalOwner' : "", 'animalLocation' : "Magnolia", 'animalBio' : 'Cushes on command, bomb proof, leads loads goes anywhere,\nAsking 6500\n Available for looking at or pick up Monday-Thursday', 'animalAge' : 8, 'animalGender' : "MALE", 'image' : '/img/Camel/1.jpg'}
+  {'animalName' : 'Carla Meadors', 'animalType' : 'Kangaroo', 'animalOwner' : "", 'animalLocation' : "Florida", 'animalBio' : 'Most have been in a petting zoo and are tame.', 'animalAge' : 10, 'animalGender' : 'MALE', 'image' : '/img/Kangaroo/1.jpg'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+  {'animalName' : , 'animalType' : , 'animalOwner' : , 'animalLocation' : , 'animalBio' : , 'animalAge' : , 'animalGender' : , 'image' : '/img'}
+
+];
 
