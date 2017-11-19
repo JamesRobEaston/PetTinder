@@ -132,7 +132,7 @@ var cards =
   {'animalName' : 'Julie', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'Julie enjoys banging her head against the wall.', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/17.jpg', 'price' : 7000},
   {'animalName' : 'Janet', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'This fish is so terrifying, that even she is shocked when she sees her reflection. ', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/18.jpg', 'price' : 500},
   {'animalName' : 'Ellen', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'This stout fish would make a good friend or a nutritious snack.', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/19.jpg', 'price' : 2000},
-  {'animalName' : 'Eileen', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'I am a fish.', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/20.jpg', 'price' : 100}
+  {'animalName' : 'Eileen', 'animalType' : 'Fish', 'animalOwner' : '', 'animalLocation' : '', 'animalBio' : 'Hmmmm, something seems fishy about this little fella...', 'animalAge' : 10, 'animalGender' : 'Female', 'image' : 'img/Fish/20.jpg', 'price' : 100}
 ];
 
 /*  FUNCTIONS */
