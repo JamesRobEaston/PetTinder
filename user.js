@@ -39,7 +39,6 @@ var prefArray[];
 
 function getNext(){
   // transition to the next card  
-  card_index++;
 
 }
 
@@ -51,16 +50,19 @@ function recommend(mailAddress, pet){
 function like(pet){
   // handle 'liking' a pet
   likedPets.push(pet);
+  card_index++;
 }
 
 function superLike(pet){
   // handle the 'super like', i.e. prioritize when sending matches
   superLikedPets.push(pet);
+  card_index++;
 }
 
 function dislike(pets){
   // essentially we will just ignore the request here
   dislikedPets.push(pets);
+  card_index++;
 }
 
 // MAYBE: undo
