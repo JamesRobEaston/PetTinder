@@ -75,7 +75,7 @@ var cards =
   {'animalName' : 'Tim', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'He can fly!', 'animalAge' : 27, 'animalGender' : 'MALE', 'image' : 'img/Dog/6.jpg', 'price' : 3000},
   {'animalName' : 'Ivan', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : '', 'animalAge' : 63, 'animalGender' : 'MALE', 'image' : 'img/Dog/7.jpg', 'price' : 600},
   {'animalName' : 'Vladimir', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'He is also known as the living marshmellow.', 'animalAge' : 23, 'animalGender' : 'MALE', 'image' : 'img/Dog/8.jpg', 'price' : 400},
-  {'animalName' : 'Sergei', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : '', 'animalAge' : 52, 'animalGender' : 'MALE', 'image' : 'img/Dog/9.jpg', 'price' : 20},
+  {'animalName' : 'Sergei', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : "Я настоящая собака, а не бот.", 'animalAge' : 52, 'animalGender' : 'MALE', 'image' : 'img/Dog/9.jpg', 'price' : 20},
   {'animalName' : 'Robert', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : 'Also known as the bone shredder', 'animalAge' : 15 ,'animalGender' : 'MALE', 'image' : 'img/Dog/10.jpg', 'price' : 800},
   {'animalName' : 'Franklin', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Dubai', 'animalBio' : '', 'animalAge' : 35, 'animalGender' : 'MALE', 'image' : 'img/Dog/11.jpg', 'price' : 150},
   {'animalName' : 'Jackie', 'animalType' : 'Dog', 'animalOwner' : '', 'animalLocation' : 'Hamburg', 'animalBio' : '', 'animalAge' : 27, 'animalGender' : 'FEMALE', 'image' : 'img/Dog/12.jpg', 'price' : 250},
@@ -552,7 +552,8 @@ function sortArray(){
   else{
     animalAspect = "animalGender";
   }
-  bubbleSort(relevantCards,animalAspect, fields["pref_" + prefArray[0]]);
+  var temp_str = "pref_" + prefArray[0];
+  bubbleSort(relevantCards,animalAspect, fields.temp_str);
   let j = 0;
   let k = 0;
   let counter = 0;
