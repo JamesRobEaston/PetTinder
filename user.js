@@ -547,7 +547,7 @@ function sortArray(){
     animalAspect = 'animalAge';
   }
   else if(prefArray[0] === "price"){
-    animalAspect = "animalPrice";
+    animalAspect = "price";
   }
   else{
     animalAspect = "animalGender";
@@ -617,7 +617,7 @@ function bubbleSort(array, aspect, prefAspectVal){
     for(let i = 0; i < array.length; i++){
       for(let j = 0; j < array.length- i- 1; j++){
         //if the value of aspect in array[j] is further from the prefered value than array[j+1], swap
-        if(array[j].animalGender === prefAspectVal && array[j+1].animalGender !== prefAspectVal){
+        if(array[j].animalGender !== prefAspectVal && array[j+1].animalGender === prefAspectVal){
           swap(array, j , j+1);
         }
       }
@@ -755,9 +755,24 @@ function populateUserPref(){
   fields.pref_gender = document.getElementById('pref_gender').value;
   fields.pref_gender = "Female";
   console.log("Pref gender: " + fields.pref_gender);
-  fields.gender_weight = 1;
-  fields.price_weight = 0;
-  fields.age_weight = 8;
+  var x = document.getElementById('sortby').value;
+  console.log("Recieved priority: " + x);
+  if (x === "price"){
+    fields.gender_weight = 0;
+    fields.price_weight = 1;
+    fields.age_weight = 0;
+  }else if(x === 'animalGender'){
+    fields.gender_weight = 1;
+    fields.price_weight = 0;
+    fields.age_weight = 0;
+  }else{//Age
+    fields.gender_weight = 0;
+    fields.price_weight = 0;
+    fields.age_weight = 1;
+  }
+  // fields.gender_weight = 1;
+  // fields.price_weight = 0;
+  // fields.age_weight = 8;
   
   /*'name' : 'PLACEHOLDER',
   'username' : 'EMAIL',
