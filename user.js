@@ -684,11 +684,15 @@ function swap(array, a, b){
 }
 
 function populateUserPref(){
+  // stuff from the clickevent function 
+  document.getElementById('form').style.display='none';
+  document.getElementById('match').style.display='block';
+  
   fields.name = 'John Doe';
   fields.username = 'john_doe@website.come';
-  fields.pref_animal = 'sadf';
-  fields.age = 20;
-  fields.gender = 'Male';
+  fields.pref_animal = document.getElementById('pref_animal').value;
+  fields.age = docuement.getElementById('pref_age').value;
+  fields.gender = document.getElementById('pref_gender').value;
   /*'name' : 'PLACEHOLDER',
   'username' : 'EMAIL',
   'password' : 'PROTECTED',
@@ -703,7 +707,7 @@ function populateUserPref(){
 }
 
 //Populate user preferences
-populateUserPref();
+//populateUserPref();
 
 // update the display
 fetchFirstCard();
