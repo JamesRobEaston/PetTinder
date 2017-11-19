@@ -60,18 +60,22 @@ var cards =
 
 // update the display
 fetchFirstCard();
+
 function getNext(){
   // transition to the next card  
   var card = relevantCards[card_index];
   
   document.getElementById('pet_pic').src = card.image;
   
-  var info = "" + card.animalName + ", " + card.animalGender +", "+ card.animalAge;
-  info += "<br>" + card.animalType + "<br>";
-  info += "" + card.animalLocation + "<br>"; 
-  info += "" + card.animalBio + "<br>";
+  // set top name line
+  var name = "" + card.animalName + ", " + card.animalGender +", " + card.animalAge;
+  name += "<br>";
   
-  document.getElementById('bio').innerHTML = info;
+  // set bio
+  var bio = card.animalType + ", " + card.animalLocation + "<br>"; 
+  bio += card.animalBio + "<br>";
+  
+  document.getElementById('name_line').innerHTML = name;
 }
 
 function fetchFirstCard(){
