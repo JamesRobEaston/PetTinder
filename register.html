@@ -9,9 +9,35 @@
   </head>
   
   <body>
-  <p style="color:white; text-align:center;">Tell us a little more about yourself:</p>
-  
-  
+    <p style="color:white; text-align:center;">Tell us a little more about yourself:</p>
+    <form id="about" method="POST">
+			<label for="pref_animal">Preferred Animal</label>
+        <select id="pref_animal" name="pref_animal" style="width:200px">
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="fish">Fish</option>
+          <option value="turtle">Turtle</option>
+          <option value="horse">Horse</option>
+          <option value="chicken">Chicken</option>
+          <option value="deer">Deer</option>
+          <option value="camel">Camel</option>
+          <option value="elephant">Elephant</option>
+          <option value="tiger">Tiger</option>
+          <option value="giraffe">Giraffe</option>
+      </select>
+			<label for="pref_age">Preferred Age</label><input type="text" name="pref_age">
+			<label for="pref_gender">I'm looking for &nbsp;</label>
+        <input type="radio" name="pref_gender" id="pref_gender" value="male">Male<br>
+        <input type="radio" name="pref_gender" id="pref_gender" value="female">Female<br>
+			<label for="distance">Within: &nbsp;</label>
+        <select id="distance name="distance" style="width:200px">
+          <option value="5">5 miles</option>
+          <option value="15">15 miles</option>
+          <option value="30">30 miles</option>
+          <option value="50">50 miles</option>
+        </select>
+			<input type="submit" action="match.html" value="Find My Forever Pet!">
+    </form>
   </body>
 
 </html>
