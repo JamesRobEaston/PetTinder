@@ -24,7 +24,6 @@ var fields = {
   "age_weight" : 2,
   "gender_weight" : 1,
   "price_weight" : 0
-
 };
 
 var card_index = 0;
