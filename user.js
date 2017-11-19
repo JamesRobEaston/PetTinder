@@ -198,7 +198,7 @@ function sortPrefArray(){
 }
 
 function resetRelevantCards(){
-  for(var i = 0; i < len(cards); i++){
+  for(var i = 0; i < cards.length; i++){
     let x = cards[i].animalType.toLowerCase();
     let y = fields.pref_animal.toLowerCase();
     if(x == y){
@@ -350,11 +350,11 @@ function sortAge(array, age){
 	var outArr = [];
 	let numSorted = 0;
 	let delta = 0;
-	while (numSorted < len(arr)){
+	while (numSorted < arr.length){
 		
-		let temp;
+		let temp = [];
 
-		for ( let i = 0 ; i < len(arr) ; i++){
+		for ( let i = 0 ; i < arr.length ; i++){
 			 if (arr[i] != undefined && (arr[i].animalAge == age - delta || arr[i].animalAge == age + delta) ){
 				 temp.push(arr[i]);
 				delete arr[i];
@@ -379,20 +379,20 @@ function sortGender(array, gender){
 	var outArr = [];
 	let delta = 0;
 
-	let temp;
+	let temp = [];
 
-	for ( let i = 0 ; i < len(arr) ; i++){
+	for ( let i = 0 ; i < arr.length ; i++){
 		if (arr[i].animalGender == gender){
 		   temp.push(arr[i]);
 		   delete arr[i];
 		}
    }
 
-   if (len(temp)){
+   if (temp.length > 0){
 	   outArr.push(temp);
    }
 
-  for ( let i = 0 ; i < len(arr) ; i++){
+  for ( let i = 0 ; i < arr.length ; i++){
     if (arr[i] != undefined){
       outArr.push(arr[i]);
       delete arr[i];
@@ -415,7 +415,7 @@ Returns array of animals of the selected type
 
 // 	var outArr = [];
 
-// 	for (let i = 0 ; i < len(arr) ; i++){
+// 	for (let i = 0 ; i < arr.length ; i++){
 // 		if (outArr[i].animalType === type){
 // 			outArr.push(arr[i]);
 // 		}
@@ -429,9 +429,9 @@ Returns array of animals of the selected type
 
 function selectAge(arr, age){
 
-	var outArr;
+	var outArr = [];
 	
-	for (let i = 0 ; i < len(arr) ; i++){
+	for (let i = 0 ; i < arr.length ; i++){
 		if (outArr[i].animalAge === age){
 			outArr.push(arr[i]);
 		}
@@ -443,9 +443,9 @@ function selectAge(arr, age){
 
 function selectGender(arr, gender){
 	
-	var outArr;
+	var outArr = [];
 	
-	for (let i = 0 ; i < len(arr) ; i++){
+	for (let i = 0 ; i < arr.length ; i++){
 		if (outArr[i].animalGender === gender){
 			outArr.push(arr[i]);
 		}
